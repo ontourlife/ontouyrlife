@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What to Do in Cities with 4 Free Hours — On Tour Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root { --black: #0a0a0a; --off-black: #111111; --dark: #1a1a1a; --border: #2a2a2a; --amber: #e8a020; --white: #f0ede8; --muted: #888880; --muted-light: #aaa9a3; --accent: #e09040; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.6; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-cta { background: var(--amber); color: var(--black) !important; padding: 8px 18px; font-weight: 500 !important; }
+  .reading-progress { position: fixed; top: 64px; left: 0; height: 2px; background: var(--accent); z-index: 99; width: 0%; transition: width 0.1s linear; }
+  .article-hero { padding-top: 64px; background: var(--off-black); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(200,120,40,0.06) 0%, transparent 60%); pointer-events: none; }
+  .article-hero-inner { max-width: 860px; margin: 0 auto; padding: 80px 40px 60px; position: relative; z-index: 1; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 36px; transition: color 0.2s; }
+  .back-link:hover { color: var(--amber); }
+  .back-link::before { content: '←'; font-size: 14px; }
+  .article-category { display: inline-block; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 12px; margin-bottom: 24px; background: rgba(200,120,40,0.15); color: var(--accent); border: 1px solid rgba(200,120,40,0.25); font-weight: 500; }
+  .article-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 76px); line-height: 0.95; letter-spacing: 1px; color: var(--white); margin-bottom: 28px; }
+  .article-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--muted-light); line-height: 1.5; margin-bottom: 36px; max-width: 640px; }
+  .article-meta { display: flex; align-items: center; gap: 20px; padding-top: 28px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .meta-author { display: flex; align-items: center; gap: 10px; }
+  .meta-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--amber); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--black); flex-shrink: 0; }
+  .meta-author-name { font-size: 14px; color: var(--white); font-weight: 400; }
+  .meta-author-role { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .meta-dot { color: var(--border); font-size: 18px; }
+  .meta-info { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+  .meta-info span { color: var(--accent); }
+  .article-body { max-width: 860px; margin: 0 auto; padding: 72px 40px 100px; }
+  .article-content p { font-size: 18px; line-height: 1.85; color: #ccc9c2; margin-bottom: 28px; font-weight: 300; }
+  .article-content p:first-child { font-size: 21px; color: var(--white); line-height: 1.75; }
+  .article-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1.5px; color: var(--white); margin: 60px 0 24px; padding-top: 60px; border-top: 1px solid var(--border); }
+  .article-content hr { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+  .article-content strong { color: var(--accent); font-weight: 500; }
+  .pull-quote { border-left: 3px solid var(--accent); padding: 8px 0 8px 32px; margin: 48px 0; }
+  .pull-quote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px !important; line-height: 1.5 !important; color: var(--white) !important; margin: 0 !important; }
+  .article-footer-note { margin-top: 64px; padding: 28px 32px; background: var(--dark); border: 1px solid var(--border); border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.7; color: var(--muted-light); }
+  .article-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .article-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border: 1px solid var(--border); color: var(--muted); transition: border-color 0.2s, color 0.2s; }
+  .tag:hover { border-color: var(--amber); color: var(--amber); }
+  .share-buttons { display: flex; gap: 10px; align-items: center; }
+  .share-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+  .share-btn { border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; background: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
+  .share-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .more-articles { background: var(--off-black); padding: 80px; border-top: 1px solid var(--border); }
+  .more-title { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 16px; }
+  .more-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .more-card { background: var(--dark); padding: 32px; text-decoration: none; color: inherit; display: block; transition: background 0.2s; border-bottom: 2px solid transparent; }
+  .more-card:hover { background: #202020; border-bottom-color: var(--amber); }
+  .more-card-cat { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; font-weight: 500; }
+  .more-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
+  .more-card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .newsletter-bar { background: var(--amber); padding: 48px 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .newsletter-bar-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; color: var(--black); margin-bottom: 6px; }
+  .newsletter-bar-sub { font-size: 14px; color: rgba(0,0,0,0.6); }
+  .newsletter-bar-btn { background: var(--black); border: none; color: var(--amber); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-block; }
+  footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 40px 80px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .footer-logo span { color: var(--white); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-back { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-back:hover { color: var(--amber); }
+  @media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } .article-hero-inner, .article-body { padding: 60px 24px 48px; } .article-content p { font-size: 16px; } .more-articles { padding: 48px 24px; } .more-grid { grid-template-columns: 1fr; } .newsletter-bar { flex-direction: column; padding: 40px 24px; } footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; } .article-actions { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+<div class="reading-progress" id="progressBar"></div>
+<nav>
+  <a class="nav-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <ul class="nav-links">
+    <li><a href="index.html#topics">Topics</a></li>
+    <li><a href="index.html#featured">Articles</a></li>
+    <li><a href="index.html#newsletter">Newsletter</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Join the Crew</a></li>
+  </ul>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="index.html" class="back-link">Back to all articles</a>
+    <span class="article-category">Mindset</span>
+    <h1 class="article-title">WHAT TO DO IN CITIES WHEN YOU HAVE 4 FREE HOURS AND NO PLAN</h1>
+    <p class="article-subtitle">A guide to making the most of your window days — solo adventures, local food, actual rest, and knowing the difference between them.</p>
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar">OTL</div>
+        <div><div class="meta-author-name">On Tour Life Team</div><div class="meta-author-role">Mindset & Lifestyle</div></div>
+      </div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info">March 10, 2026</div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info"><span>6 min read</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="article-content">
+    <p>You have four hours. Maybe three. The lobby call isn't until two and it's currently ten in the morning and you're standing in a city you've technically visited before but never actually seen. The crew has scattered. Some people are sleeping. Some are at the venue already. And you have this window — this small, strange, genuinely free window — and no idea what to do with it.</p>
+
+    <p>Most touring people waste it. Not dramatically — not by doing something wrong. But by defaulting to the path of least resistance: the hotel room, the phone, the familiar comfort of staying exactly where they are until they have to go somewhere. The window closes. The bus loads. And somewhere between that city and the next one, there's a faint awareness that something was available and you didn't take it.</p>
+
+    <p>Window days and free hours on tour are rarer than they look and more important than most people treat them. Here's how to actually use them.</p>
+
+    <hr>
+
+    <h2>FIRST: KNOW WHAT YOU ACTUALLY NEED</h2>
+
+    <p>The mistake most people make with free time on tour is treating it as a uniform resource — a gap to be filled with activity. But free time serves different functions depending on what your body and mind actually need in that moment, and filling it with the wrong thing is almost as bad as wasting it entirely.</p>
+
+    <p>Sometimes what you need is genuine rest. Not sleep necessarily — just stillness. Quiet. A room that isn't moving, a schedule that isn't pressing, a few hours where nothing is required of you. If you've had three heavy show days in a row and you're running on fumes, the best thing you can do with four free hours might be to sit in a coffee shop with a book and do absolutely nothing remarkable. That's not wasting the time. That's using it correctly.</p>
+
+    <p>Other times what you need is movement and novelty — actual engagement with the city you're in. The antidote to the numbing sameness of venue-hotel-bus-venue is stepping into a place that is genuinely different and letting it register. That registers differently than rest, and it has different value.</p>
+
+    <p><strong>The first question to ask yourself in any free window: am I depleted or am I restless?</strong> Depleted needs restoration. Restless needs exploration. Getting these mixed up — forcing yourself to explore when you need to rest, or lying in bed when you need to move — wastes the window just as effectively as not using it at all.</p>
+
+    <div class="pull-quote">
+      <p>"Window days are rarer than they look and more important than most people treat them."</p>
+    </div>
+
+    <h2>IF YOU NEED RESTORATION</h2>
+
+    <p>Good restoration on tour has a few reliable forms. The common thread is that it should feel genuinely different from the tour environment — quieter, slower, more in your own control.</p>
+
+    <p><strong>Find a local coffee shop that isn't a chain.</strong> Not for the coffee specifically, though good coffee helps. For the atmosphere. Independent coffee shops in any city tend to have a particular quality — people working quietly, ambient noise at a comfortable level, no particular pressure to be anywhere or do anything. Sitting in one for an hour with no agenda is one of the most reliably restorative things you can do on a short window, and it's available in almost every city.</p>
+
+    <p><strong>Walk somewhere with no destination.</strong> Not a tourist route. Not the venue neighborhood. Just pick a direction and walk for thirty minutes. Let the city be ambient rather than purposeful. This works better than it sounds — the combination of light physical movement, natural light, and novel visual input is genuinely restorative in ways that sitting in a dark hotel room is not.</p>
+
+    <p><strong>Eat a real meal slowly.</strong> Not catering. Not fast food grabbed on the way somewhere. Find a local restaurant, sit down, order something you've never had, and eat it without looking at your phone. This sounds absurdly simple but it's remarkable how rarely touring people eat a meal that is actually a meal rather than fuel administered as efficiently as possible.</p>
+
+    <h2>IF YOU NEED EXPLORATION</h2>
+
+    <p>When you're restless rather than depleted, the city becomes an actual resource. The challenge is using it intentionally rather than just filling time.</p>
+
+    <p><strong>Have one thing per city.</strong> Not a list. One thing — a specific neighborhood, a specific museum, a specific food, a specific record shop — that you're going to actually do in this city. Having one concrete destination transforms a window day from an abstract "I should see something" into an actual experience. The one thing doesn't have to be famous or impressive. It just has to be real and specific.</p>
+
+    <p><strong>Ask someone who lives there.</strong> Not TripAdvisor. Not a tourist website. The hotel staff, a local crew member, the restaurant owner where you had breakfast. People who live in a city know things that no algorithm surfaces — the market that only happens on Tuesdays, the view that isn't on any list, the coffee that's worth the twenty-minute walk. One genuine local recommendation is worth more than an hour of online research.</p>
+
+    <p><strong>Go somewhere you can't go as a tourist.</strong> One of the overlooked privileges of touring life is that you occasionally have access — to venues, to neighborhoods, to times of day — that regular visitors don't. Early morning in a city before it wakes up is a different place than the same city at noon. The loading dock area of a major venue at 7AM, the streets around the arena before anyone arrives, the backstage view of a city that most people only ever see from the front. These moments are available to you in ways they aren't to most people. They're worth noticing.</p>
+
+    <h2>THE THING ABOUT CITIES YOU'VE BEEN TO BEFORE</h2>
+
+    <p>Most touring people develop a complicated relationship with the cities they visit repeatedly. The first few times, everywhere is new. By the tenth visit, it can all feel like the same venue with different wallpaper.</p>
+
+    <p>The antidote to this is going deeper rather than broader. Instead of trying to find something new in a city you think you know, find out more about the one thing you already liked about it. The city that has the great market — go further into the market. The city where you found the perfect bowl of ramen two tours ago — go back and try three more places. The city with the waterfront walk — take a different stretch of it.</p>
+
+    <p>Cities reward this. They are inexhaustible in a way that touring schedules rarely allow you to discover, but a few intentional hours every visit accumulate into something real over years. The places that touring people love most — the ones they actually look forward to on the routing — are almost always places they've developed a relationship with over time rather than places they've simply passed through repeatedly.</p>
+
+    <div class="article-footer-note">
+      Next window day: ask yourself whether you're depleted or restless before you decide anything. Then act accordingly. That single question is worth more than any list of things to do.
+    </div>
+  </div>
+
+  <div class="article-actions">
+    <div class="article-tags">
+      <span class="tag">Mindset</span><span class="tag">Travel</span><span class="tag">Window Days</span><span class="tag">Touring Life</span><span class="tag">Wellbeing</span>
+    </div>
+    <div class="share-buttons">
+      <span class="share-label">Share</span>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=What+to+Do+in+Cities+with+4+Free+Hours&url=https://ontourlife.com/cities-free-time" target="_blank">Twitter</a>
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://ontourlife.com/cities-free-time" target="_blank">Facebook</a>
+      <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Link',2000)">Copy Link</button>
+    </div>
+  </div>
+</div>
+
+<div class="more-articles">
+  <div class="more-title">More from On Tour Life</div>
+  <div class="more-grid">
+    <a href="finding-purpose-on-tour.html" class="more-card">
+      <div class="more-card-cat">Purpose</div>
+      <div class="more-card-title">FINDING PURPOSE WHEN YOUR LIFE IS OTHER PEOPLE'S MOMENTS</div>
+      <div class="more-card-desc">You make the magic happen. But when the show ends, what's yours?</div>
+    </a>
+    <a href="relationships-on-tour.html" class="more-card">
+      <div class="more-card-cat">Connection</div>
+      <div class="more-card-title">RELATIONSHIPS FROM THE ROAD</div>
+      <div class="more-card-desc">Long tours take a toll on every relationship in your life. Here's how to maintain them.</div>
+    </a>
+    <a href="happiness-paradox.html" class="more-card">
+      <div class="more-card-cat">Mental Health</div>
+      <div class="more-card-title">THE HAPPINESS PARADOX</div>
+      <div class="more-card-desc">Why doing what you love can still break you — and what to do about it.</div>
+    </a>
+  </div>
+</div>
+
+<div class="newsletter-bar">
+  <div><div class="newsletter-bar-title">STAY IN THE LOOP</div><div class="newsletter-bar-sub">One email a week. Real stories, practical advice, zero fluff.</div></div>
+  <a href="index.html#newsletter" class="newsletter-bar-btn" style="text-decoration:none;">Get the Newsletter →</a>
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <span class="footer-copy">© 2026 On Tour Life. Built for the road, by the road.</span>
+  <a href="index.html" class="footer-back">← All Articles</a>
+</footer>
+<script>
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    document.getElementById('progressBar').style.width = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
+  });
+</script>
+</body>
+</html>

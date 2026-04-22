@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EATING ACROSS TIME ZONES: HOW TO KEEP YOUR BODY ON TRACK — On Tour Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root { --black: #0a0a0a; --off-black: #111111; --dark: #1a1a1a; --border: #2a2a2a; --amber: #e8a020; --white: #f0ede8; --muted: #888880; --muted-light: #aaa9a3; --accent: #e8a020; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.6; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-cta { background: var(--amber); color: var(--black) !important; padding: 8px 18px; font-weight: 500 !important; }
+  .reading-progress { position: fixed; top: 64px; left: 0; height: 2px; background: var(--accent); z-index: 99; width: 0%; transition: width 0.1s linear; }
+  .article-hero { padding-top: 64px; background: var(--off-black); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(232,160,32,0.06) 0%, transparent 60%); pointer-events: none; }
+  .article-hero-inner { max-width: 860px; margin: 0 auto; padding: 80px 40px 60px; position: relative; z-index: 1; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 36px; transition: color 0.2s; }
+  .back-link:hover { color: var(--amber); }
+  .back-link::before { content: '←'; font-size: 14px; }
+  .article-category { display: inline-block; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 12px; margin-bottom: 24px; background: rgba(232,160,32,0.15); color: var(--accent); border: 1px solid rgba(232,160,32,0.25); font-weight: 500; }
+  .article-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 76px); line-height: 0.95; letter-spacing: 1px; color: var(--white); margin-bottom: 28px; }
+  .article-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--muted-light); line-height: 1.5; margin-bottom: 36px; max-width: 640px; }
+  .article-meta { display: flex; align-items: center; gap: 20px; padding-top: 28px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .meta-author { display: flex; align-items: center; gap: 10px; }
+  .meta-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--amber); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--black); flex-shrink: 0; }
+  .meta-author-name { font-size: 14px; color: var(--white); font-weight: 400; }
+  .meta-author-role { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .meta-dot { color: var(--border); font-size: 18px; }
+  .meta-info { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+  .meta-info span { color: var(--accent); }
+  .article-body { max-width: 860px; margin: 0 auto; padding: 72px 40px 100px; }
+  .article-content p { font-size: 18px; line-height: 1.85; color: #ccc9c2; margin-bottom: 28px; font-weight: 300; }
+  .article-content p:first-child { font-size: 21px; color: var(--white); line-height: 1.75; }
+  .article-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1.5px; color: var(--white); margin: 60px 0 24px; padding-top: 60px; border-top: 1px solid var(--border); }
+  .article-content hr { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+  .article-content strong { color: var(--accent); font-weight: 500; }
+  .pull-quote { border-left: 3px solid var(--accent); padding: 8px 0 8px 32px; margin: 48px 0; }
+  .pull-quote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px !important; line-height: 1.5 !important; color: var(--white) !important; margin: 0 !important; }
+  .article-footer-note { margin-top: 64px; padding: 28px 32px; background: var(--dark); border: 1px solid var(--border); border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.7; color: var(--muted-light); }
+  .article-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .article-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border: 1px solid var(--border); color: var(--muted); transition: border-color 0.2s, color 0.2s; }
+  .tag:hover { border-color: var(--amber); color: var(--amber); }
+  .share-buttons { display: flex; gap: 10px; align-items: center; }
+  .share-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+  .share-btn { border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; background: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
+  .share-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .more-articles { background: var(--off-black); padding: 80px; border-top: 1px solid var(--border); }
+  .more-title { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 16px; }
+  .more-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .more-card { background: var(--dark); padding: 32px; text-decoration: none; color: inherit; display: block; transition: background 0.2s; border-bottom: 2px solid transparent; }
+  .more-card:hover { background: #202020; border-bottom-color: var(--amber); }
+  .more-card-cat { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; font-weight: 500; }
+  .more-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
+  .more-card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .newsletter-bar { background: var(--amber); padding: 48px 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .newsletter-bar-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; color: var(--black); margin-bottom: 6px; }
+  .newsletter-bar-sub { font-size: 14px; color: rgba(0,0,0,0.6); }
+  .newsletter-bar-btn { background: var(--black); border: none; color: var(--amber); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-block; }
+  footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 40px 80px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .footer-logo span { color: var(--white); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-back { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-back:hover { color: var(--amber); }
+  @media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } .article-hero-inner, .article-body { padding: 60px 24px 48px; } .article-content p { font-size: 16px; } .more-articles { padding: 48px 24px; } .more-grid { grid-template-columns: 1fr; } .newsletter-bar { flex-direction: column; padding: 40px 24px; } footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; } .article-actions { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+<div class="reading-progress" id="progressBar"></div>
+<nav>
+  <a class="nav-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <ul class="nav-links">
+    <li><a href="index.html#topics">Topics</a></li>
+    <li><a href="index.html#featured">Articles</a></li>
+    <li><a href="index.html#newsletter">Newsletter</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Join the Crew</a></li>
+  </ul>
+</nav>
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="topic-nutrition.html" class="back-link">Back to Nutrition</a>
+    <span class="article-category">Nutrition</span>
+    <h1 class="article-title">EATING ACROSS TIME ZONES: HOW TO KEEP YOUR BODY ON TRACK</h1>
+    <p class="article-subtitle">Your gut doesn't know what country it's in. Here's how to help it adjust — and stop feeling like you're running on fumes every time you cross a continent.</p>
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar">OTL</div>
+        <div><div class="meta-author-name">On Tour Life Team</div><div class="meta-author-role">Nutrition on the Road</div></div>
+      </div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info">April 11, 2026</div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info"><span>6 min read</span></div>
+    </div>
+  </div>
+</div>
+<div class="article-body">
+  <div class="article-content">
+    <p>There's a particular kind of wrong that sets in twenty-four hours after a transatlantic flight. It's not quite jet lag in the textbook sense — you've probably slept at some point, you've done this enough times that you know the shape of it. But your body is running on a different clock than the city you're in, and the show is in fourteen hours, and the catering table looks like breakfast even though it's 6PM.</p>
+
+    <p>Eating across time zones is one of the underappreciated challenges of international touring. Most advice focuses on sleep — the melatonin, the blackout curtains, the light exposure timing. But what you eat and when you eat it has an equally significant effect on how fast your body adjusts and how functional you feel while it's adjusting.</p>
+
+    <hr>
+
+    <h2>WHY FOOD AND TIME ZONES ARE CONNECTED</h2>
+
+    <p>Your circadian rhythm isn't just regulated by light. It's also regulated by food timing — specifically, by the timing of your first substantial meal of the day. Research consistently shows that when you eat communicates time-of-day information to your body's internal clock, independently of the light signals coming through your eyes.</p>
+
+    <p>This means that eating at the times that correspond to your destination's daytime — even when your body thinks it's the middle of the night — helps accelerate adjustment. And eating according to your home time zone's schedule — having a full meal in the middle of what is locally 3AM, because that's when you'd normally eat dinner — actively slows adjustment down.</p>
+
+    <p>The practical implication: on arrival in a new time zone, anchor your eating schedule to local time as fast as possible, even if it means eating when you're not hungry or skipping a meal when you are.</p>
+
+    <div class="pull-quote">
+      <p>"What you eat and when you eat it tells your body what time it is — as powerfully as light does."</p>
+    </div>
+
+    <h2>WHAT TO EAT ON TRAVEL DAYS</h2>
+
+    <p>Long travel days — overnight flights, multiple connections, eight hours in airports — are nutritionally chaotic for most touring people. The combination of limited food options, disrupted hunger cues, dehydration, and the strange suspended-time quality of long-haul travel makes eating well genuinely difficult.</p>
+
+    <p><strong>Eat light during travel, heavier on arrival.</strong> Your digestive system slows down during long flights and extended sitting. Heavy meals that would be fine at home become uncomfortable and energy-draining in the air. Light, easily digested food during travel keeps your system from being burdened when it's already under pressure. Save the bigger, more grounding meal for when you arrive and can eat at a table like a human being.</p>
+
+    <p><strong>Protein and fat over carbs during the flight.</strong> Carbohydrate-heavy meals spike blood sugar and then crash it, which worsens the fatigue and brain fog of travel. Protein and healthy fat provide more stable energy and don't trigger the same blood sugar rollercoaster. This doesn't mean avoiding carbs entirely — just not making them the centrepiece of every in-flight meal.</p>
+
+    <p><strong>Avoid alcohol on the flight.</strong> This one is unpopular but the evidence is clear: alcohol significantly impairs sleep quality, accelerates dehydration, and worsens jet lag recovery. One drink at altitude has roughly the effect of two at ground level. If you're trying to actually function within 24 hours of landing, the flight drink is working against you.</p>
+
+    <h2>ON ARRIVAL: EATING TO RESET</h2>
+
+    <p>The first 48 hours in a new time zone are when your food timing choices have the most impact. After that, your body adjusts regardless — but those first two days determine whether you're functional for the early shows or fighting through fog.</p>
+
+    <p><strong>Have a real breakfast at local breakfast time, even if you're not hungry.</strong> This is the single highest-impact meal timing choice you can make for time zone adjustment. A substantial breakfast at local morning time — with protein, some fat, some complex carbohydrate — sends a strong time signal to your body's clock. Even if you're not hungry. Even if you ate at what felt like dinner two hours ago. Force the breakfast.</p>
+
+    <p><strong>Avoid napping through local mealtimes.</strong> If you need to sleep on arrival, set an alarm so you don't sleep through lunch or dinner. Missing a meal in the local time structure delays your clock adjustment and makes the following day harder.</p>
+
+    <p><strong>Caffeine timing matters.</strong> Use caffeine strategically in the first 48 hours — during local daytime, none after local 2PM. This sounds straightforward but requires actual discipline when your body is telling you it needs coffee at 8PM because that's midday at home.</p>
+
+    <h2>THE LONG-TERM PATTERN</h2>
+
+    <p>Touring professionals who do significant international travel over years develop a personal relationship with jet lag — they know roughly how their body adjusts, what helps, what doesn't, what's non-negotiable. Building that self-knowledge deliberately rather than just accumulating it through suffering makes a real difference.</p>
+
+    <p>Keep a rough mental note of what works for you specifically. Some people adjust faster going east, slower going west. Some people find that a single anchor meal at the right time is enough. Some need the full 48-hour protocol. Your body is the experiment. Pay attention to it.</p>
+
+    <div class="article-footer-note">
+      The basics: eat light during travel, anchor to local meal times immediately on arrival, force the breakfast. Everything else is refinement from there.
+    </div>
+  </div>
+  <div class="article-actions">
+    <div class="article-tags"><span class="tag">Nutrition</span><span class="tag">Time Zones</span><span class="tag">Energy</span><span class="tag">Touring Life</span></div>
+    <div class="share-buttons">
+      <span class="share-label">Share</span>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://ontourlife.com/eating-across-time-zones" target="_blank">Twitter</a>
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://ontourlife.com/eating-across-time-zones" target="_blank">Facebook</a>
+      <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Link',2000)">Copy Link</button>
+    </div>
+  </div>
+</div>
+<div class="more-articles">
+  <div class="more-title">More from On Tour Life</div>
+  <div class="more-grid">    <a href="surviving-the-catering-table.html" class="more-card">
+      <div class="more-card-cat">Nutrition</div>
+      <div class="more-card-title">SURVIVING THE CATERING TABLE</div>
+      <div class="more-card-desc">How to actually fuel yourself when catering is your only option.</div>
+    </a>
+    <a href="hydration-on-tour.html" class="more-card">
+      <div class="more-card-cat">Nutrition</div>
+      <div class="more-card-title">HYDRATION ON TOUR</div>
+      <div class="more-card-desc">The one habit that changes everything on the road.</div>
+    </a>
+    <a href="sleep-protocols.html" class="more-card">
+      <div class="more-card-cat">Fitness</div>
+      <div class="more-card-title">SLEEP PROTOCOLS FOR TOURING</div>
+      <div class="more-card-desc">The science of crashing anywhere — bus bunks, hotel rooms, airports.</div>
+    </a></div>
+</div>
+<div class="newsletter-bar">
+  <div><div class="newsletter-bar-title">STAY IN THE LOOP</div><div class="newsletter-bar-sub">One email a week. Real stories, practical advice, zero fluff.</div></div>
+  <a href="index.html#newsletter" class="newsletter-bar-btn" style="text-decoration:none;">Get the Newsletter →</a>
+</div>
+<footer>
+  <a class="footer-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <span class="footer-copy">© 2026 On Tour Life. Built for the road, by the road.</span>
+  <a href="index.html" class="footer-back">← All Articles</a>
+</footer>
+<script>
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    document.getElementById('progressBar').style.width = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
+  });
+</script>
+</body>
+</html>

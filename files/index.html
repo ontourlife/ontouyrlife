@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Fit — Wellness for the Touring Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --off-black: #111111;
+    --dark: #1a1a1a;
+    --panel: #1e1e1e;
+    --border: #2a2a2a;
+    --amber: #e8a020;
+    --amber-dim: #b87d18;
+    --amber-glow: rgba(232,160,32,0.12);
+    --amber-glow-hard: rgba(232,160,32,0.25);
+    --white: #f0ede8;
+    --muted: #888880;
+    --muted-light: #aaa9a3;
+    --red: #c94040;
+    --teal: #2a8a7a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 3px;
+    color: var(--amber);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amber); }
+
+  .nav-cta {
+    background: var(--amber);
+    color: var(--black) !important;
+    padding: 8px 18px;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--amber-dim) !important; color: var(--black) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    padding-top: 64px;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow-line {
+    width: 40px;
+    height: 1px;
+    background: var(--amber);
+  }
+  .hero-eyebrow span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 400;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 8vw, 120px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .hero-title em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--amber);
+    font-size: 0.85em;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted-light);
+    max-width: 420px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--amber);
+    color: var(--black);
+    border: none;
+    padding: 14px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--amber-dim); transform: translateY(-1px); }
+
+  .btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--muted-light);
+    padding: 13px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image-area {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 60% 40%, rgba(232,160,32,0.08) 0%, transparent 60%),
+      linear-gradient(135deg, #1a1410 0%, #0d0d0d 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* SVG stage illustration */
+  .stage-art {
+    width: 80%;
+    max-width: 460px;
+    opacity: 0.85;
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 48px;
+    left: 60px;
+    display: flex;
+    gap: 48px;
+  }
+  .stat { text-align: left; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--amber);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--amber);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 30s linear infinite;
+  }
+  .ticker-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--black);
+    padding: 0 32px;
+  }
+  .ticker-sep {
+    color: rgba(0,0,0,0.3);
+    margin: 0 8px;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTION BASE */
+  section { padding: 100px 80px; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    gap: 40px;
+  }
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-tag::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--amber);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 4vw, 64px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+  }
+  .section-desc {
+    max-width: 360px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-top: auto;
+    padding-top: 12px;
+  }
+
+  /* FEATURED POSTS */
+  .featured { background: var(--off-black); }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 2px;
+  }
+
+  .post-card {
+    background: var(--dark);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.25s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .post-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .post-card:hover { background: #222; }
+  .post-card:hover::after { transform: scaleX(1); }
+
+  .post-card.featured-main {
+    grid-row: span 2;
+    padding: 56px;
+    background: linear-gradient(145deg, #1c1a16 0%, #161616 100%);
+  }
+
+  .post-category {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .cat-mental { background: rgba(42,138,122,0.2); color: #4ec4b0; border: 1px solid rgba(42,138,122,0.3); }
+  .cat-nutrition { background: rgba(232,160,32,0.15); color: var(--amber); border: 1px solid rgba(232,160,32,0.25); }
+  .cat-fitness { background: rgba(201,64,64,0.15); color: #e06060; border: 1px solid rgba(201,64,64,0.25); }
+  .cat-social { background: rgba(100,100,200,0.15); color: #9090e0; border: 1px solid rgba(100,100,200,0.25); }
+  .cat-mindset { background: rgba(200,120,40,0.15); color: #e09040; border: 1px solid rgba(200,120,40,0.25); }
+  .cat-work { background: rgba(80,160,80,0.15); color: #70cc70; border: 1px solid rgba(80,160,80,0.25); }
+
+  .post-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    color: var(--white);
+  }
+  .post-card.featured-main .post-title {
+    font-size: 46px;
+    margin-bottom: 20px;
+  }
+
+  .post-excerpt {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--muted);
+  }
+  .post-meta-dot { color: var(--border); }
+  .post-read-time { color: var(--amber); }
+
+  .post-number {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* CATEGORIES */
+  .categories { background: var(--black); }
+
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
+  }
+
+  .cat-block {
+    background: var(--dark);
+    padding: 36px 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .cat-block:hover { transform: translateY(-4px); }
+
+  .cat-icon {
+    font-size: 32px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .cat-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .cat-count {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--muted);
+  }
+
+  .cat-block:nth-child(1) { border-top: 2px solid #4ec4b0; }
+  .cat-block:nth-child(2) { border-top: 2px solid var(--amber); }
+  .cat-block:nth-child(3) { border-top: 2px solid #e06060; }
+  .cat-block:nth-child(4) { border-top: 2px solid #9090e0; }
+  .cat-block:nth-child(5) { border-top: 2px solid #e09040; }
+  .cat-block:nth-child(6) { border-top: 2px solid #70cc70; }
+
+  .cat-block:nth-child(1):hover { background: rgba(42,138,122,0.12); }
+  .cat-block:nth-child(2):hover { background: rgba(232,160,32,0.08); }
+  .cat-block:nth-child(3):hover { background: rgba(201,64,64,0.08); }
+  .cat-block:nth-child(4):hover { background: rgba(100,100,200,0.08); }
+  .cat-block:nth-child(5):hover { background: rgba(200,120,40,0.08); }
+  .cat-block:nth-child(6):hover { background: rgba(80,160,80,0.08); }
+
+  /* REAL TALK SECTION */
+  .real-talk {
+    background: var(--amber);
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .real-talk::before {
+    content: 'REAL TALK';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 160px;
+    color: rgba(0,0,0,0.06);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: 4px;
+  }
+  .real-talk-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .real-talk-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(26px, 3vw, 40px);
+    color: var(--black);
+    line-height: 1.3;
+  }
+  .real-talk-quote strong {
+    font-style: normal;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+  }
+  .real-talk-right { color: #2a1a00; }
+  .real-talk-right p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    opacity: 0.8;
+  }
+  .real-talk-right .btn-dark {
+    background: var(--black);
+    color: var(--amber);
+    padding: 14px 28px;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .real-talk-right .btn-dark:hover { background: #1a1a1a; }
+
+  /* LATEST POSTS */
+  .latest { background: var(--off-black); }
+
+  .latest-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .latest-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 32px;
+    padding: 28px 36px;
+    background: var(--dark);
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+    border-left: 3px solid transparent;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .latest-item:hover { background: #202020; border-left-color: var(--amber); }
+
+  .latest-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--border);
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+  .latest-item:hover .latest-num { color: var(--amber); }
+
+  .latest-content {}
+  .latest-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+  .latest-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .latest-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .latest-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-bottom: 8px;
+  }
+  .latest-date {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    display: block;
+  }
+
+  /* NEWSLETTER */
+  .newsletter {
+    background: var(--dark);
+    padding: 100px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .newsletter::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--amber-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .newsletter-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 20px;
+  }
+  .newsletter-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 5vw, 80px);
+    letter-spacing: 2px;
+    line-height: 0.95;
+    margin-bottom: 20px;
+  }
+  .newsletter-sub {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto 40px;
+  }
+  .newsletter-form {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .newsletter-input {
+    flex: 1;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-right: none;
+    color: var(--white);
+    padding: 16px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .newsletter-input:focus { border-color: var(--amber); }
+  .newsletter-input::placeholder { color: var(--muted); }
+  .newsletter-submit {
+    background: var(--amber);
+    border: none;
+    color: var(--black);
+    padding: 16px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .newsletter-submit:hover { background: var(--amber-dim); }
+  .newsletter-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: var(--black);
+    padding: 80px;
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr 2px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .divider-v { background: var(--border); }
+  .about-col {}
+  .about-col-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: var(--amber);
+    margin-bottom: 14px;
+  }
+  .about-col p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--off-black);
+    border-top: 1px solid var(--border);
+    padding: 60px 80px 40px;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+    gap: 60px;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 3px;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+  .footer-logo span { color: var(--white); }
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 260px;
+  }
+  .footer-cols {
+    display: flex;
+    gap: 80px;
+  }
+  .footer-col-title {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+  .footer-socials {
+    display: flex;
+    gap: 16px;
+  }
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+  .social-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-title { animation-delay: 0.2s; }
+  .hero-sub { animation-delay: 0.3s; }
+  .hero-actions { animation-delay: 0.4s; }
+  .hero-stats { animation-delay: 0.5s; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 24px 40px; }
+    .hero-right { display: none; }
+    .hero-stats { left: 24px; bottom: 24px; }
+    section { padding: 60px 24px; }
+    .section-header { flex-direction: column; }
+    .posts-grid { grid-template-columns: 1fr; }
+    .post-card.featured-main { grid-row: span 1; padding: 36px 28px; }
+    .cats-grid { grid-template-columns: repeat(3, 1fr); }
+    .real-talk { padding: 48px 24px; }
+    .real-talk-inner { grid-template-columns: 1fr; gap: 32px; }
+    .latest-item { grid-template-columns: 60px 1fr; }
+    .latest-right { display: none; }
+    .newsletter { padding: 60px 24px; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-input { border-right: 1px solid var(--border); border-bottom: none; }
+    .about-strip { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
+    .divider-v { display: none; }
+    footer { padding: 48px 24px 32px; }
+    .footer-top { flex-direction: column; gap: 40px; }
+    .footer-cols { gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>ROAD</span>FIT</a>
+  <ul class="nav-links">
+    <li><a href="#topics">Topics</a></li>
+    <li><a href="#featured">Articles</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Join the Crew</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Wellness for the Road</span>
+    </div>
+    <h1 class="hero-title">
+      BUILT FOR<br>
+      <em>life on</em><br>
+      TOUR
+    </h1>
+    <p class="hero-sub">
+      Health, habits, and human connection — written by and for audio engineers, lighting techs, tour managers, musicians, and everyone who calls the road home.
+    </p>
+    <div class="hero-actions">
+      <a href="#featured" class="btn-primary">Read Articles</a>
+      <a href="#newsletter" class="btn-ghost">Get the Newsletter</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-area">
+      <svg class="stage-art" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stage floor -->
+        <ellipse cx="250" cy="340" rx="220" ry="30" fill="rgba(232,160,32,0.06)" stroke="rgba(232,160,32,0.15)" stroke-width="1"/>
+        
+        <!-- Truss structure left -->
+        <line x1="80" y1="60" x2="80" y2="320" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+        <line x1="100" y1="60" x2="100" y2="320" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="80" y1="80" x2="100" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="80" y1="120" x2="100" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="80" y1="160" x2="100" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="80" y1="200" x2="100" y2="220" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="80" y1="240" x2="100" y2="260" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="80" y1="280" x2="100" y2="300" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="100" y1="80" x2="80" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="100" y1="120" x2="80" y2="140" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="100" y1="160" x2="80" y2="180" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="100" y1="200" x2="80" y2="220" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+        <!-- Truss top -->
+        <line x1="80" y1="60" x2="420" y2="60" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+        <line x1="80" y1="78" x2="420" y2="78" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="110" y1="60" x2="130" y2="78" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="150" y1="60" x2="170" y2="78" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="190" y1="60" x2="210" y2="78" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="230" y1="60" x2="250" y2="78" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="270" y1="60" x2="290" y2="78" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="310" y1="60" x2="330" y2="78" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="350" y1="60" x2="370" y2="78" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="390" y1="60" x2="410" y2="78" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+        <!-- Truss right -->
+        <line x1="400" y1="60" x2="400" y2="320" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="420" y1="60" x2="420" y2="320" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+        <line x1="400" y1="80" x2="420" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="400" y1="120" x2="420" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="400" y1="160" x2="420" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="400" y1="200" x2="420" y2="220" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="400" y1="240" x2="420" y2="260" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="400" y1="280" x2="420" y2="300" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+        <!-- Lights hanging -->
+        <g>
+          <line x1="140" y1="78" x2="135" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <polygon points="128,115 142,115 139,130 131,130" fill="rgba(80,80,80,0.8)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <ellipse cx="135" cy="132" rx="6" ry="3" fill="rgba(232,160,32,0.9)"/>
+          <line x1="135" y1="135" x2="135" y2="320" stroke="rgba(232,160,32,0.18)" stroke-width="20" stroke-linecap="round"/>
+        </g>
+        <g>
+          <line x1="200" y1="78" x2="200" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <polygon points="193,115 207,115 204,130 196,130" fill="rgba(80,80,80,0.8)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <ellipse cx="200" cy="132" rx="6" ry="3" fill="rgba(200,100,100,0.95)"/>
+          <line x1="200" y1="135" x2="170" y2="320" stroke="rgba(200,100,100,0.12)" stroke-width="22" stroke-linecap="round"/>
+        </g>
+        <g>
+          <line x1="250" y1="78" x2="250" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <polygon points="243,115 257,115 254,130 246,130" fill="rgba(80,80,80,0.8)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <ellipse cx="250" cy="132" rx="8" ry="4" fill="rgba(255,255,255,0.95)"/>
+          <line x1="250" y1="136" x2="250" y2="320" stroke="rgba(255,255,255,0.18)" stroke-width="28" stroke-linecap="round"/>
+        </g>
+        <g>
+          <line x1="300" y1="78" x2="305" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <polygon points="298,115 312,115 309,130 301,130" fill="rgba(80,80,80,0.8)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <ellipse cx="305" cy="132" rx="6" ry="3" fill="rgba(100,160,220,0.95)"/>
+          <line x1="305" y1="135" x2="320" y2="320" stroke="rgba(100,160,220,0.12)" stroke-width="20" stroke-linecap="round"/>
+        </g>
+        <g>
+          <line x1="360" y1="78" x2="365" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <polygon points="358,115 372,115 369,130 361,130" fill="rgba(80,80,80,0.8)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <ellipse cx="365" cy="132" rx="6" ry="3" fill="rgba(232,160,32,0.9)"/>
+          <line x1="365" y1="135" x2="380" y2="320" stroke="rgba(232,160,32,0.14)" stroke-width="18" stroke-linecap="round"/>
+        </g>
+
+        <!-- Speaker stacks -->
+        <rect x="82" y="200" width="40" height="60" rx="2" fill="rgba(40,40,40,0.9)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <rect x="86" y="205" width="32" height="22" rx="10" fill="rgba(20,20,20,0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+        <rect x="86" y="230" width="32" height="14" rx="7" fill="rgba(20,20,20,0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+        <rect x="86" y="247" width="32" height="10" rx="5" fill="rgba(20,20,20,0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+
+        <rect x="378" y="200" width="40" height="60" rx="2" fill="rgba(40,40,40,0.9)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <rect x="382" y="205" width="32" height="22" rx="10" fill="rgba(20,20,20,0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+        <rect x="382" y="230" width="32" height="14" rx="7" fill="rgba(20,20,20,0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+        <rect x="382" y="247" width="32" height="10" rx="5" fill="rgba(20,20,20,0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+
+        <!-- Stage platform -->
+        <rect x="100" y="300" width="300" height="18" rx="1" fill="rgba(50,45,40,0.9)" stroke="rgba(232,160,32,0.15)" stroke-width="1"/>
+        <rect x="100" y="315" width="300" height="8" rx="1" fill="rgba(35,30,25,0.9)"/>
+
+        <!-- Figure (musician) center stage -->
+        <circle cx="250" cy="272" r="10" fill="rgba(200,180,160,0.6)"/>
+        <line x1="250" y1="282" x2="250" y2="298" stroke="rgba(200,180,160,0.5)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="250" y1="288" x2="238" y2="295" stroke="rgba(200,180,160,0.5)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="250" y1="288" x2="262" y2="285" stroke="rgba(200,180,160,0.5)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="250" y1="298" x2="243" y2="310" stroke="rgba(200,180,160,0.5)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="250" y1="298" x2="257" y2="310" stroke="rgba(200,180,160,0.5)" stroke-width="3" stroke-linecap="round"/>
+
+        <!-- Mic stand -->
+        <line x1="250" y1="285" x2="250" y2="298" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="243" y1="298" x2="257" y2="298" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="245" y1="298" x2="242" y2="308" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <line x1="255" y1="298" x2="258" y2="308" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+        <!-- Small crew figure left -->
+        <circle cx="165" cy="285" r="7" fill="rgba(200,180,160,0.3)"/>
+        <line x1="165" y1="292" x2="165" y2="304" stroke="rgba(200,180,160,0.25)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="165" y1="296" x2="157" y2="301" stroke="rgba(200,180,160,0.25)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="165" y1="296" x2="173" y2="299" stroke="rgba(200,180,160,0.25)" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- Small crew figure right -->
+        <circle cx="335" cy="285" r="7" fill="rgba(200,180,160,0.3)"/>
+        <line x1="335" y1="292" x2="335" y2="304" stroke="rgba(200,180,160,0.25)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="335" y1="296" x2="327" y2="299" stroke="rgba(200,180,160,0.25)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="335" y1="296" x2="343" y2="301" stroke="rgba(200,180,160,0.25)" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- Glow under lights -->
+        <ellipse cx="250" cy="320" rx="50" ry="12" fill="rgba(255,255,255,0.07)"/>
+        <ellipse cx="165" cy="318" rx="30" ry="7" fill="rgba(200,100,100,0.05)"/>
+        <ellipse cx="335" cy="318" rx="30" ry="7" fill="rgba(100,160,220,0.05)"/>
+      </svg>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">340+</div>
+      <div class="stat-label">Articles</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">12K</div>
+      <div class="stat-label">Road Warriors</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Core Topics</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">MENTAL HEALTH ON THE ROAD <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">EATING WELL AT CATERING <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">STAYING FIT IN HOTEL ROOMS <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">FIGHTING LONELINESS ON TOUR <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">SLEEP HACKS FOR LONG HAULS <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">MAKING REAL CONNECTIONS <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">PURPOSE BEYOND THE GIG <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">PROFESSIONAL COMMUNICATION <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">MENTAL HEALTH ON THE ROAD <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">EATING WELL AT CATERING <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">STAYING FIT IN HOTEL ROOMS <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">FIGHTING LONELINESS ON TOUR <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">SLEEP HACKS FOR LONG HAULS <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">MAKING REAL CONNECTIONS <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">PURPOSE BEYOND THE GIG <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">PROFESSIONAL COMMUNICATION <span class="ticker-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- FEATURED POSTS -->
+<section class="featured" id="featured">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">Featured</div>
+      <h2 class="section-title">LATEST<br>ARTICLES</h2>
+    </div>
+    <p class="section-desc">Real talk about the realities of touring life — from eating well off a catering table to staying mentally grounded across time zones.</p>
+  </div>
+
+  <div class="posts-grid">
+    <a href="the-3am-loneliness.html" class="post-card featured-main">
+      <div class="post-number">01</div>
+      <span class="post-category cat-mental">Mental Health</span>
+      <h3 class="post-title">THE 3AM LONELINESS: WHY THE ROAD HITS DIFFERENT AFTER THE SHOW</h3>
+      <p class="post-excerpt">The crowd goes home. The crew breaks down the stage. And suddenly, in a quiet hotel room in a city you've visited ten times but never really know, the silence gets loud. Here's how touring professionals are actually dealing with it.</p>
+      <div class="post-meta">
+        <span>On Tour Life Team</span>
+        <span class="post-meta-dot">·</span>
+        <span>March 14, 2026</span>
+        <span class="post-meta-dot">·</span>
+        <span class="post-read-time">8 min read</span>
+      </div>
+    </a>
+
+    <a href="surviving-the-catering-table.html" class="post-card">
+      <div class="post-number">02</div>
+      <span class="post-category cat-nutrition">Nutrition</span>
+      <h3 class="post-title">SURVIVING (AND THRIVING) AT THE CATERING TABLE</h3>
+      <p class="post-excerpt">Catering can be your best friend or worst enemy. A touring nutritionist breaks down how to eat for energy, not just survival.</p>
+      <div class="post-meta">
+        <span>On Tour Life Team</span>
+        <span class="post-meta-dot">·</span>
+        <span class="post-read-time">6 min read</span>
+      </div>
+    </a>
+
+    <a href="hotel-room-workout.html" class="post-card">
+      <div class="post-number">03</div>
+      <span class="post-category cat-fitness">Fitness</span>
+      <h3 class="post-title">THE 20-MINUTE HOTEL ROOM WORKOUT NO ONE CAN EXCUSE THEIR WAY OUT OF</h3>
+      <p class="post-excerpt">No gym, no excuses. A bodyweight routine built for load-in days, back-to-backs, and 4-hour drive windows.</p>
+      <div class="post-meta">
+        <span>On Tour Life Team</span>
+        <span class="post-meta-dot">·</span>
+        <span class="post-read-time">5 min read</span>
+      </div>
+    </a>
+
+    <a href="making-friends-on-tour.html" class="post-card">
+      <div class="post-number">04</div>
+      <span class="post-category cat-social">Connection</span>
+      <h3 class="post-title">HOW TO ACTUALLY MAKE FRIENDS ON TOUR (WHEN EVERYONE'S ALREADY IN THEIR BUNKS)</h3>
+      <p class="post-excerpt">The bus is full. You're surrounded by people. And somehow you've never felt more alone. The social dynamics of touring are weird — here's how to navigate them.</p>
+      <div class="post-meta">
+        <span>On Tour Life Team</span>
+        <span class="post-meta-dot">·</span>
+        <span class="post-read-time">7 min read</span>
+      </div>
+    </a>
+
+    <a href="finding-purpose-on-tour.html" class="post-card">
+      <div class="post-number">05</div>
+      <span class="post-category cat-mindset">Mindset</span>
+      <h3 class="post-title">FINDING PURPOSE WHEN YOUR LIFE IS OTHER PEOPLE'S MOMENTS</h3>
+      <p class="post-excerpt">You make the magic happen. But when the show ends, what's yours? A conversation about meaning, identity, and life behind the scenes.</p>
+      <div class="post-meta">
+        <span>On Tour Life Team</span>
+        <span class="post-meta-dot">·</span>
+        <span class="post-read-time">9 min read</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="topics">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">Browse</div>
+      <h2 class="section-title">EXPLORE<br>BY TOPIC</h2>
+    </div>
+    <p class="section-desc">Six pillars covering every dimension of the touring life — because wellness out here isn't one-size-fits-all.</p>
+  </div>
+
+  <div class="cats-grid">
+    <a href="topic-mental-health.html" class="cat-block">
+      <span class="cat-icon">🧠</span>
+      <div class="cat-name">Mental Health</div>
+      <div class="cat-count">48 articles</div>
+    </a>
+    <a href="topic-nutrition.html" class="cat-block">
+      <span class="cat-icon">🥗</span>
+      <div class="cat-name">Nutrition</div>
+      <div class="cat-count">62 articles</div>
+    </a>
+    <a href="topic-fitness.html" class="cat-block">
+      <span class="cat-icon">💪</span>
+      <div class="cat-name">Fitness</div>
+      <div class="cat-count">55 articles</div>
+    </a>
+    <a href="topic-connection.html" class="cat-block">
+      <span class="cat-icon">🤝</span>
+      <div class="cat-name">Connection</div>
+      <div class="cat-count">39 articles</div>
+    </a>
+    <a href="topic-purpose.html" class="cat-block">
+      <span class="cat-icon">🎯</span>
+      <div class="cat-name">Purpose</div>
+      <div class="cat-count">44 articles</div>
+    </a>
+    <a href="topic-pro-skills.html" class="cat-block">
+      <span class="cat-icon">🎙️</span>
+      <div class="cat-name">Pro Skills</div>
+      <div class="cat-count">58 articles</div>
+    </a>
+  </div>
+</section>
+
+<!-- REAL TALK BANNER -->
+<div class="real-talk">
+  <div class="real-talk-inner">
+    <blockquote class="real-talk-quote">
+      "You're not just a <strong>touring professional</strong> — you're a person trying to stay whole while living a life nobody else quite understands."
+    </blockquote>
+    <div class="real-talk-right">
+      <p>Most wellness advice was written for people with gym memberships, home kitchens, and consistent sleep schedules. That's not your life. This blog is.</p>
+      <p>From audio engineers to tour managers, from road crew to headline artists — if the road is your office, you belong here.</p>
+      <a href="#" class="btn-dark">Our Story →</a>
+    </div>
+  </div>
+</div>
+
+<!-- LATEST POSTS -->
+<section class="latest">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">All Articles</div>
+      <h2 class="section-title">MORE FROM<br>THE ROAD</h2>
+    </div>
+    <p class="section-desc">New pieces drop every week — from practical habits to deeper conversations about what this life really does to you.</p>
+  </div>
+
+  <div class="latest-list">
+    <a href="sleep-protocols.html" class="latest-item">
+      <div class="latest-num">06</div>
+      <div class="latest-content">
+        <div class="latest-title">SLEEP PROTOCOLS FOR TOURING: THE SCIENCE OF CRASHING ANYWHERE</div>
+        <div class="latest-desc">Bus bunks, hotel rooms, airport terminals — a sleep researcher's guide to getting real rest on the road.</div>
+      </div>
+      <div class="latest-right">
+        <span class="latest-tag cat-fitness">Fitness</span>
+        <span class="latest-date">Apr 14, 2026</span>
+      </div>
+    </a>
+    <a href="communication-on-tour.html" class="latest-item">
+      <div class="latest-num">07</div>
+      <div class="latest-content">
+        <div class="latest-title">COMMUNICATION THAT DOESN'T GET YOU FIRED: WORKING WITH ARTISTS, MANAGEMENT, AND PROMOTERS</div>
+        <div class="latest-desc">The unspoken rules of professional communication in live events — what separates veterans from everyone else.</div>
+      </div>
+      <div class="latest-right">
+        <span class="latest-tag cat-work">Pro Skills</span>
+        <span class="latest-date">Apr 7, 2026</span>
+      </div>
+    </a>
+    <a href="happiness-paradox.html" class="latest-item">
+      <div class="latest-num">08</div>
+      <div class="latest-content">
+        <div class="latest-title">THE HAPPINESS PARADOX: WHY DOING WHAT YOU LOVE CAN STILL BREAK YOU</div>
+        <div class="latest-desc">Loving the industry doesn't protect you from burnout. In fact, it might make it worse. Here's why — and what to do about it.</div>
+      </div>
+      <div class="latest-right">
+        <span class="latest-tag cat-mental">Mental Health</span>
+        <span class="latest-date">Mar 31, 2026</span>
+      </div>
+    </a>
+    <a href="hydration-on-tour.html" class="latest-item">
+      <div class="latest-num">09</div>
+      <div class="latest-content">
+        <div class="latest-title">HYDRATION ON TOUR: THE ONE HABIT THAT CHANGES EVERYTHING</div>
+        <div class="latest-desc">Between physical load-ins, loud environments, and inconsistent schedules, most touring pros are chronically dehydrated. Easy fixes inside.</div>
+      </div>
+      <div class="latest-right">
+        <span class="latest-tag cat-nutrition">Nutrition</span>
+        <span class="latest-date">Mar 24, 2026</span>
+      </div>
+    </a>
+    <a href="relationships-on-tour.html" class="latest-item">
+      <div class="latest-num">10</div>
+      <div class="latest-content">
+        <div class="latest-title">RELATIONSHIPS FROM THE ROAD: HOW TO ACTUALLY MAINTAIN THEM</div>
+        <div class="latest-desc">Long tours take a toll on every relationship in your life. Honest advice from people who've figured out how to make it work.</div>
+      </div>
+      <div class="latest-right">
+        <span class="latest-tag cat-social">Connection</span>
+        <span class="latest-date">Mar 17, 2026</span>
+      </div>
+    </a>
+    <a href="cities-free-time.html" class="latest-item">
+      <div class="latest-num">11</div>
+      <div class="latest-content">
+        <div class="latest-title">WHAT TO DO IN CITIES WHEN YOU HAVE 4 FREE HOURS AND NO PLAN</div>
+        <div class="latest-desc">A guide to making the most of your window days — solo adventures, local food, actual rest, and knowing the difference between them.</div>
+      </div>
+      <div class="latest-right">
+        <span class="latest-tag cat-mindset">Mindset</span>
+        <span class="latest-date">Mar 10, 2026</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div class="newsletter-eyebrow">Weekly Dispatch</div>
+  <h2 class="newsletter-title">STAY IN<br>THE LOOP</h2>
+  <p class="newsletter-sub">One email a week. Practical advice, honest stories, and the kind of wellness content that actually makes sense when you're living out of a suitcase.</p>
+  <div class="newsletter-form">
+    <input type="email" class="newsletter-input" placeholder="your@email.com">
+    <button class="newsletter-submit">Join the Crew</button>
+  </div>
+  <p class="newsletter-note">No spam. Unsubscribe any time. Written by people who've been out there.</p>
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip" id="about">
+  <div class="about-col">
+    <div class="about-col-title">Who We Are</div>
+    <p>Road Fit was started by touring professionals who got tired of wellness advice that assumed you had a kitchen, a gym, and a consistent sleep schedule. We're FOH engineers, lighting directors, tour managers, and musicians writing for people who understand the life.</p>
+  </div>
+  <div class="divider-v"></div>
+  <div class="about-col">
+    <div class="about-col-title">What We Cover</div>
+    <p>Mental health and loneliness. Nutrition and fitness on the road. Making friends and maintaining relationships. Professional communication. Finding purpose and happiness when your life doesn't look like anyone else's. All of it, honestly.</p>
+  </div>
+  <div class="divider-v"></div>
+  <div class="about-col">
+    <div class="about-col-title">Write For Us</div>
+    <p>Have a story, a habit that changed your touring life, or something you wish someone had told you earlier? We're always looking for real voices from the road. No writing experience needed — just truth.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><span>ROAD</span>FIT</div>
+      <p class="footer-tagline">Wellness, habits, and mental health for the people who make live events happen.</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <div class="footer-col-title">Topics</div>
+        <ul class="footer-links">
+          <li><a href="#">Mental Health</a></li>
+          <li><a href="#">Nutrition</a></li>
+          <li><a href="#">Fitness</a></li>
+          <li><a href="#">Connection</a></li>
+          <li><a href="#">Purpose</a></li>
+          <li><a href="#">Pro Skills</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Site</div>
+        <ul class="footer-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Write For Us</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">For Role</div>
+        <ul class="footer-links">
+          <li><a href="#">Audio Engineers</a></li>
+          <li><a href="#">Lighting Techs</a></li>
+          <li><a href="#">Tour Managers</a></li>
+          <li><a href="#">Musicians</a></li>
+          <li><a href="#">Production</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Road Fit. Built for the road, by the road.</p>
+    <div class="footer-socials">
+      <a class="social-btn" title="Instagram">IG</a>
+      <a class="social-btn" title="Twitter/X">X</a>
+      <a class="social-btn" title="YouTube">YT</a>
+      <a class="social-btn" title="Spotify">SP</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

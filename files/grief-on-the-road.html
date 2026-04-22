@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRIEF ON THE ROAD: LOSING SOMEONE WHILE YOU'RE FAR FROM HOME — On Tour Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root { --black: #0a0a0a; --off-black: #111111; --dark: #1a1a1a; --border: #2a2a2a; --amber: #e8a020; --white: #f0ede8; --muted: #888880; --muted-light: #aaa9a3; --accent: #4ec4b0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.6; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-cta { background: var(--amber); color: var(--black) !important; padding: 8px 18px; font-weight: 500 !important; }
+  .reading-progress { position: fixed; top: 64px; left: 0; height: 2px; background: var(--accent); z-index: 99; width: 0%; transition: width 0.1s linear; }
+  .article-hero { padding-top: 64px; background: var(--off-black); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(42,138,122,0.06) 0%, transparent 60%); pointer-events: none; }
+  .article-hero-inner { max-width: 860px; margin: 0 auto; padding: 80px 40px 60px; position: relative; z-index: 1; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 36px; transition: color 0.2s; }
+  .back-link:hover { color: var(--amber); }
+  .back-link::before { content: '←'; font-size: 14px; }
+  .article-category { display: inline-block; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 12px; margin-bottom: 24px; background: rgba(42,138,122,0.15); color: var(--accent); border: 1px solid rgba(42,138,122,0.25); font-weight: 500; }
+  .article-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 76px); line-height: 0.95; letter-spacing: 1px; color: var(--white); margin-bottom: 28px; }
+  .article-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--muted-light); line-height: 1.5; margin-bottom: 36px; max-width: 640px; }
+  .article-meta { display: flex; align-items: center; gap: 20px; padding-top: 28px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .meta-author { display: flex; align-items: center; gap: 10px; }
+  .meta-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--amber); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--black); flex-shrink: 0; }
+  .meta-author-name { font-size: 14px; color: var(--white); font-weight: 400; }
+  .meta-author-role { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .meta-dot { color: var(--border); font-size: 18px; }
+  .meta-info { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+  .meta-info span { color: var(--accent); }
+  .article-body { max-width: 860px; margin: 0 auto; padding: 72px 40px 100px; }
+  .article-content p { font-size: 18px; line-height: 1.85; color: #ccc9c2; margin-bottom: 28px; font-weight: 300; }
+  .article-content p:first-child { font-size: 21px; color: var(--white); line-height: 1.75; }
+  .article-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1.5px; color: var(--white); margin: 60px 0 24px; padding-top: 60px; border-top: 1px solid var(--border); }
+  .article-content hr { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+  .article-content strong { color: var(--accent); font-weight: 500; }
+  .pull-quote { border-left: 3px solid var(--accent); padding: 8px 0 8px 32px; margin: 48px 0; }
+  .pull-quote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px !important; line-height: 1.5 !important; color: var(--white) !important; margin: 0 !important; }
+  .article-footer-note { margin-top: 64px; padding: 28px 32px; background: var(--dark); border: 1px solid var(--border); border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.7; color: var(--muted-light); }
+  .article-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .article-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border: 1px solid var(--border); color: var(--muted); transition: border-color 0.2s, color 0.2s; }
+  .tag:hover { border-color: var(--amber); color: var(--amber); }
+  .share-buttons { display: flex; gap: 10px; align-items: center; }
+  .share-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+  .share-btn { border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; background: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
+  .share-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .more-articles { background: var(--off-black); padding: 80px; border-top: 1px solid var(--border); }
+  .more-title { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 16px; }
+  .more-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .more-card { background: var(--dark); padding: 32px; text-decoration: none; color: inherit; display: block; transition: background 0.2s; border-bottom: 2px solid transparent; }
+  .more-card:hover { background: #202020; border-bottom-color: var(--amber); }
+  .more-card-cat { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; font-weight: 500; }
+  .more-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
+  .more-card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .newsletter-bar { background: var(--amber); padding: 48px 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .newsletter-bar-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; color: var(--black); margin-bottom: 6px; }
+  .newsletter-bar-sub { font-size: 14px; color: rgba(0,0,0,0.6); }
+  .newsletter-bar-btn { background: var(--black); border: none; color: var(--amber); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-block; }
+  footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 40px 80px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .footer-logo span { color: var(--white); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-back { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-back:hover { color: var(--amber); }
+  @media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } .article-hero-inner, .article-body { padding: 60px 24px 48px; } .article-content p { font-size: 16px; } .more-articles { padding: 48px 24px; } .more-grid { grid-template-columns: 1fr; } .newsletter-bar { flex-direction: column; padding: 40px 24px; } footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; } .article-actions { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+<div class="reading-progress" id="progressBar"></div>
+<nav>
+  <a class="nav-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <ul class="nav-links">
+    <li><a href="index.html#topics">Topics</a></li>
+    <li><a href="index.html#featured">Articles</a></li>
+    <li><a href="index.html#newsletter">Newsletter</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Join the Crew</a></li>
+  </ul>
+</nav>
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="topic-mental-health.html" class="back-link">Back to Mental Health</a>
+    <span class="article-category">Mental Health</span>
+    <h1 class="article-title">GRIEF ON THE ROAD: LOSING SOMEONE WHILE YOU'RE FAR FROM HOME</h1>
+    <p class="article-subtitle">How touring professionals deal with loss from a distance — the phone calls, the guilt, and the impossible decision of whether to stay or go.</p>
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar">OTL</div>
+        <div><div class="meta-author-name">On Tour Life Team</div><div class="meta-author-role">Mental Health</div></div>
+      </div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info">April 10, 2026</div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info"><span>9 min read</span></div>
+    </div>
+  </div>
+</div>
+<div class="article-body">
+  <div class="article-content">
+    <p>The call comes on a Tuesday afternoon between load-in and sound check. Or at 3AM between cities. Or during a show, and you don't see it until after the last song, when you're coiling cable in a venue that smells like smoke and sweat and someone else's triumph.</p>
+
+    <p>Someone is sick. Someone has died. Someone needs you home, and home is on the other side of a flight you don't know how to book and a tour that needs you here and a part of yourself that can't quite make sense of both things being true at the same time.</p>
+
+    <p>Grief on the road is its own particular experience. Not worse than grief anywhere else — grief is grief and it is always terrible. But different. Shaped by distance and guilt and the relentless continuation of a schedule that doesn't pause for the weight of what you're carrying.</p>
+
+    <hr>
+
+    <h2>THE IMPOSSIBLE QUESTION: DO YOU GO OR DO YOU STAY</h2>
+
+    <p>This is the question that touring people dread most, and there is no clean answer to it. There is only the specific circumstances of your specific situation, and the best decision you can make with the information you have.</p>
+
+    <p>Some things that are worth actually weighing, rather than just feeling guilty about:</p>
+
+    <p><strong>What would your presence actually provide?</strong> Not in the abstract — concretely. Would you be arriving in time? Would you be a comfort or an additional logistical burden in an already overwhelmed situation? Are there other people there who can provide what's needed? These questions aren't selfish. They're relevant.</p>
+
+    <p><strong>What would leaving cost you professionally?</strong> Not as a reason not to go — as information. Some situations are worth the cost. Some aren't. Some can be navigated. Knowing the real professional consequences rather than the imagined worst case helps you make a cleaner decision.</p>
+
+    <p><strong>What will you be able to live with?</strong> This one is less logical and more honest. Whatever the calculation says, there is a version of each choice that you'll have to carry afterward. Not all grief is about what you did. Some of it is about what you didn't do, or couldn't do, or chose not to do. That weight is real and it deserves to be part of the decision.</p>
+
+    <div class="pull-quote">
+      <p>"The tour continues whether you're on it or not. That fact is both harder and more freeing than it sounds."</p>
+    </div>
+
+    <h2>IF YOU STAY</h2>
+
+    <p>The decision to stay on tour while dealing with loss at home is one that many touring people make and almost none of them talk about openly. There is a particular kind of shame attached to it — a sense that choosing the work over the grief makes you a certain kind of person. It doesn't. It makes you someone in an impossible situation trying to do the best you can.</p>
+
+    <p>What staying while grieving actually requires is a level of compartmentalization that is both impressive and costly. You put the grief in a box and you do the work because the work needs to be done and you're the one who needs to do it. And then somewhere — in the bus bunk, in the hotel room, in the gap between the last encore and load-out — the box opens a little, and what's in it is still there, exactly as heavy as it was.</p>
+
+    <p><strong>Tell someone.</strong> Not the whole crew necessarily. But one person — a department head, a colleague you trust, a tour manager who needs to know. Not for sympathy, though that matters too. But because carrying something this heavy in complete silence, while performing competently every day, is one of the lonelier experiences there is. And one trusted person who knows means one person who can check in, cover for you if you need a moment, and be a human point of contact in the middle of a lot of professional noise.</p>
+
+    <p><strong>Give yourself permission to not be fine.</strong> The professional persona — the one that shows up ready, handles problems calmly, and keeps everything moving — is real. But it's a layer, not the whole thing. If you're not fine under that layer, that's allowed. You don't have to perform grief correctly on top of performing professionally. You just have to get through the day.</p>
+
+    <h2>IF YOU GO</h2>
+
+    <p>The decision to leave a tour — even with full professional approval, even with replacement coverage sorted, even with every logistical piece in place — comes with its own complicated feelings.</p>
+
+    <p>There is often guilt about leaving the crew short, or about the timing, or about things that weren't finished. There is sometimes a disorienting relief at being home that arrives alongside the grief, and the combination is confusing. There is frequently a difficulty transitioning from road-mode to grief-mode — your nervous system has been in high-alert professional mode, and suddenly it's being asked to be available for something completely different.</p>
+
+    <p>Give yourself transition time if you have any. Don't land and immediately be present for everyone else's experience of the loss. Even an hour to sit with your own before absorbing everyone else's matters.</p>
+
+    <h2>AFTER</h2>
+
+    <p>Grief doesn't follow the tour schedule. It doesn't resolve in the gap between legs or finish up neatly by the time you need to be back on the bus. It travels with you, resurfaces at unpredictable moments, and asks things of you at times when you have nothing left to give.</p>
+
+    <p>The touring people who navigate grief with the most integrity — not the ones who handle it most smoothly, but the ones who come out of it most whole — are almost always the ones who got support beyond what the road could offer. Therapy, honest conversations with people they trust, time to actually grieve rather than just cope.</p>
+
+    <p>You can love this life and also need more than it can give you. Those two things are not in conflict. They are just both true.</p>
+
+    <div class="article-footer-note">
+      If you're dealing with loss right now, from the road or anywhere — please reach out to someone who can help. A therapist, a grief counselor, a trusted person in your life. You don't have to carry it alone, and you don't have to carry it entirely on your own schedule.
+    </div>
+  </div>
+  <div class="article-actions">
+    <div class="article-tags"><span class="tag">Mental Health</span><span class="tag">Grief</span><span class="tag">Touring Life</span><span class="tag">Family</span></div>
+    <div class="share-buttons">
+      <span class="share-label">Share</span>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://ontourlife.com/grief-on-the-road" target="_blank">Twitter</a>
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://ontourlife.com/grief-on-the-road" target="_blank">Facebook</a>
+      <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Link',2000)">Copy Link</button>
+    </div>
+  </div>
+</div>
+<div class="more-articles">
+  <div class="more-title">More from On Tour Life</div>
+  <div class="more-grid">    <a href="the-3am-loneliness.html" class="more-card">
+      <div class="more-card-cat">Mental Health</div>
+      <div class="more-card-title">THE 3AM LONELINESS</div>
+      <div class="more-card-desc">Why the road hits different after the show.</div>
+    </a>
+    <a href="relationships-on-tour.html" class="more-card">
+      <div class="more-card-cat">Connection</div>
+      <div class="more-card-title">RELATIONSHIPS FROM THE ROAD</div>
+      <div class="more-card-desc">How to actually maintain the relationships that matter.</div>
+    </a>
+    <a href="finding-purpose-on-tour.html" class="more-card">
+      <div class="more-card-cat">Purpose</div>
+      <div class="more-card-title">FINDING PURPOSE ON TOUR</div>
+      <div class="more-card-desc">What belongs to you when your life is other people's moments.</div>
+    </a></div>
+</div>
+<div class="newsletter-bar">
+  <div><div class="newsletter-bar-title">STAY IN THE LOOP</div><div class="newsletter-bar-sub">One email a week. Real stories, practical advice, zero fluff.</div></div>
+  <a href="index.html#newsletter" class="newsletter-bar-btn" style="text-decoration:none;">Get the Newsletter →</a>
+</div>
+<footer>
+  <a class="footer-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <span class="footer-copy">© 2026 On Tour Life. Built for the road, by the road.</span>
+  <a href="index.html" class="footer-back">← All Articles</a>
+</footer>
+<script>
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    document.getElementById('progressBar').style.width = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 20-Minute Hotel Room Workout — On Tour Life</title>
+<meta name="description" content="No gym, no excuses. A bodyweight routine built specifically for touring life — load-in days, back-to-backs, and 4-hour drive windows.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root { --black: #0a0a0a; --off-black: #111111; --dark: #1a1a1a; --border: #2a2a2a; --amber: #e8a020; --amber-dim: #b87d18; --white: #f0ede8; --muted: #888880; --muted-light: #aaa9a3; --red: #c94040; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.6; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-cta { background: var(--amber); color: var(--black) !important; padding: 8px 18px; font-weight: 500 !important; }
+  .reading-progress { position: fixed; top: 64px; left: 0; height: 2px; background: var(--red); z-index: 99; width: 0%; transition: width 0.1s linear; }
+  .article-hero { padding-top: 64px; background: var(--off-black); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(201,64,64,0.06) 0%, transparent 60%); pointer-events: none; }
+  .article-hero-inner { max-width: 860px; margin: 0 auto; padding: 80px 40px 60px; position: relative; z-index: 1; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 36px; transition: color 0.2s; }
+  .back-link:hover { color: var(--amber); }
+  .back-link::before { content: '←'; font-size: 14px; }
+  .article-category { display: inline-block; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 12px; margin-bottom: 24px; background: rgba(201,64,64,0.15); color: #e06060; border: 1px solid rgba(201,64,64,0.25); font-weight: 500; }
+  .article-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 76px); line-height: 0.95; letter-spacing: 1px; color: var(--white); margin-bottom: 28px; }
+  .article-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--muted-light); line-height: 1.5; margin-bottom: 36px; max-width: 640px; }
+  .article-meta { display: flex; align-items: center; gap: 20px; padding-top: 28px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .meta-author { display: flex; align-items: center; gap: 10px; }
+  .meta-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--amber); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--black); flex-shrink: 0; }
+  .meta-author-name { font-size: 14px; color: var(--white); font-weight: 400; }
+  .meta-author-role { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .meta-dot { color: var(--border); font-size: 18px; }
+  .meta-info { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+  .meta-info span { color: #e06060; }
+  .article-body { max-width: 860px; margin: 0 auto; padding: 72px 40px 100px; }
+  .article-content p { font-size: 18px; line-height: 1.85; color: #ccc9c2; margin-bottom: 28px; font-weight: 300; }
+  .article-content p:first-child { font-size: 21px; color: var(--white); line-height: 1.75; }
+  .article-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1.5px; color: var(--white); margin: 60px 0 24px; padding-top: 60px; border-top: 1px solid var(--border); }
+  .article-content hr { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+  .article-content strong { color: #e06060; font-weight: 500; }
+  .pull-quote { border-left: 3px solid #e06060; padding: 8px 0 8px 32px; margin: 48px 0; }
+  .pull-quote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px !important; line-height: 1.5 !important; color: var(--white) !important; margin: 0 !important; }
+
+  /* WORKOUT BLOCK */
+  .workout-block { background: var(--dark); border: 1px solid var(--border); border-left: 3px solid #e06060; margin: 48px 0; overflow: hidden; }
+  .workout-block-header { background: rgba(201,64,64,0.12); padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+  .workout-block-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: #e06060; }
+  .workout-block-meta { font-size: 12px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+  .exercise-list { list-style: none; }
+  .exercise-item { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 20px; padding: 18px 28px; border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.2s; }
+  .exercise-item:last-child { border-bottom: none; }
+  .exercise-item:hover { background: rgba(255,255,255,0.02); }
+  .exercise-num { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: rgba(201,64,64,0.4); }
+  .exercise-name { font-size: 15px; color: var(--white); font-weight: 400; margin-bottom: 3px; }
+  .exercise-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .exercise-sets { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #e06060; letter-spacing: 1px; text-align: right; white-space: nowrap; }
+
+  .article-footer-note { margin-top: 64px; padding: 28px 32px; background: var(--dark); border: 1px solid var(--border); border-left: 3px solid #e06060; font-size: 14px; line-height: 1.7; color: var(--muted-light); }
+  .article-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .article-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+  .tag:hover { border-color: var(--amber); color: var(--amber); }
+  .share-buttons { display: flex; gap: 10px; align-items: center; }
+  .share-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+  .share-btn { border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; background: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
+  .share-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .more-articles { background: var(--off-black); padding: 80px; border-top: 1px solid var(--border); }
+  .more-title { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 16px; }
+  .more-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .more-card { background: var(--dark); padding: 32px; text-decoration: none; color: inherit; display: block; transition: background 0.2s; border-bottom: 2px solid transparent; }
+  .more-card:hover { background: #202020; border-bottom-color: var(--amber); }
+  .more-card-cat { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; font-weight: 500; }
+  .more-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
+  .more-card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .newsletter-bar { background: var(--amber); padding: 48px 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .newsletter-bar-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; color: var(--black); margin-bottom: 6px; }
+  .newsletter-bar-sub { font-size: 14px; color: rgba(0,0,0,0.6); }
+  .newsletter-bar-form { display: flex; }
+  .newsletter-bar-input { background: rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.2); border-right: none; color: var(--black); padding: 14px 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; width: 260px; }
+  .newsletter-bar-input::placeholder { color: rgba(0,0,0,0.4); }
+  .newsletter-bar-btn { background: var(--black); border: none; color: var(--amber); padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+  footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 40px 80px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .footer-logo span { color: var(--white); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-back { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-back:hover { color: var(--amber); }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; } .nav-links { display: none; }
+    .article-hero-inner, .article-body { padding: 60px 24px 48px; }
+    .article-content p { font-size: 16px; }
+    .more-articles { padding: 48px 24px; } .more-grid { grid-template-columns: 1fr; }
+    .newsletter-bar { flex-direction: column; padding: 40px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    .exercise-item { grid-template-columns: 32px 1fr auto; gap: 12px; padding: 16px 20px; }
+    .article-actions { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="reading-progress" id="progressBar"></div>
+<nav>
+  <a class="nav-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <ul class="nav-links">
+    <li><a href="index.html#topics">Topics</a></li>
+    <li><a href="index.html#featured">Articles</a></li>
+    <li><a href="index.html#newsletter">Newsletter</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Join the Crew</a></li>
+  </ul>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="index.html" class="back-link">Back to all articles</a>
+    <span class="article-category">Fitness</span>
+    <h1 class="article-title">THE 20-MINUTE HOTEL ROOM WORKOUT NO ONE CAN EXCUSE THEIR WAY OUT OF</h1>
+    <p class="article-subtitle">No gym membership. No equipment. No excuses. A complete bodyweight routine built for the realities of touring — tight spaces, tired bodies, and zero consistency.</p>
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar">OTL</div>
+        <div><div class="meta-author-name">On Tour Life Team</div><div class="meta-author-role">Fitness on the Road</div></div>
+      </div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info">April 7, 2026</div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info"><span>5 min read</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="article-content">
+    <p>Let's get something out of the way first: this is not a fitness article written by someone who has never been on tour.</p>
+
+    <p>This is written for people who know what it feels like to check into a hotel at 2AM after a fourteen-hour day, wake up four hours later for an early lobby call, and still somehow be expected to function at full capacity by the time load-in starts. People who have been on their feet all day moving heavy things in loud rooms before most people have had their first coffee.</p>
+
+    <p>The standard fitness advice — hit the hotel gym, maintain a consistent routine, rest and recover properly — was written for people with normal schedules. That's not an insult. It's just not your life.</p>
+
+    <p>So here's a routine that actually works inside that life. Twenty minutes. No equipment. Fits in the space between the bed and the wall. Can be done before a show, after a show, or on the bus before the next city.</p>
+
+    <hr>
+
+    <h2>WHY BOTHER AT ALL WHEN YOU'RE ALREADY EXHAUSTED</h2>
+
+    <p>This is the question nobody wants to answer honestly. And the honest answer is: because the exhaustion gets worse if you don't move.</p>
+
+    <p>Touring is physically demanding in a very specific way — lots of lifting, lots of standing, lots of repetitive motion, almost no cardiovascular work and almost no recovery. Your body gets beaten up but never actually worked out. The result over a long tour is stiffness, joint pain, poor sleep, low energy, and a general feeling of physical deterioration that most people in the industry just accept as the cost of the job.</p>
+
+    <p>Twenty minutes of intentional movement three or four times a week doesn't fix all of that. But it changes enough of it to matter. Better sleep. Less stiffness. More consistent energy. A body that feels like it belongs to you rather than something you're just dragging from city to city.</p>
+
+    <div class="pull-quote">
+      <p>"Your body gets beaten up on tour but never actually worked out. Twenty minutes changes that."</p>
+    </div>
+
+    <h2>THE ROUTINE</h2>
+
+    <p>This is a full-body circuit. Do each exercise back to back with minimal rest between them. Rest 90 seconds after completing the full circuit. Repeat three times. That's your twenty minutes.</p>
+
+    <div class="workout-block">
+      <div class="workout-block-header">
+        <div class="workout-block-title">THE HOTEL ROOM CIRCUIT</div>
+        <div class="workout-block-meta">3 rounds · 90 sec rest between rounds · ~20 min</div>
+      </div>
+      <ul class="exercise-list">
+        <li class="exercise-item">
+          <div class="exercise-num">01</div>
+          <div><div class="exercise-name">Squat</div><div class="exercise-desc">Feet shoulder-width, chest up, sit back. If your knees hurt, go shallower — depth comes with time.</div></div>
+          <div class="exercise-sets">15 reps</div>
+        </li>
+        <li class="exercise-item">
+          <div class="exercise-num">02</div>
+          <div><div class="exercise-name">Push-Up</div><div class="exercise-desc">From knees is completely fine. Chest to floor, full extension at the top. Quality over quantity.</div></div>
+          <div class="exercise-sets">10 reps</div>
+        </li>
+        <li class="exercise-item">
+          <div class="exercise-num">03</div>
+          <div><div class="exercise-name">Reverse Lunge</div><div class="exercise-desc">Step back, knee hovers above the floor. Alternating legs. Great for the hips after a long day of standing.</div></div>
+          <div class="exercise-sets">10 each leg</div>
+        </li>
+        <li class="exercise-item">
+          <div class="exercise-num">04</div>
+          <div><div class="exercise-name">Plank Hold</div><div class="exercise-desc">Elbows under shoulders, body flat. If 30 seconds is too easy, go to 45. If it's too hard, drop to knees.</div></div>
+          <div class="exercise-sets">30 sec</div>
+        </li>
+        <li class="exercise-item">
+          <div class="exercise-num">05</div>
+          <div><div class="exercise-name">Glute Bridge</div><div class="exercise-desc">On your back, feet flat, drive hips up and squeeze at the top. This one undoes a lot of sitting and standing damage.</div></div>
+          <div class="exercise-sets">15 reps</div>
+        </li>
+        <li class="exercise-item">
+          <div class="exercise-num">06</div>
+          <div><div class="exercise-name">Mountain Climbers</div><div class="exercise-desc">Plank position, alternate driving knees to chest at a controlled pace. Gets the heart rate up without needing space.</div></div>
+          <div class="exercise-sets">20 reps</div>
+        </li>
+        <li class="exercise-item">
+          <div class="exercise-num">07</div>
+          <div><div class="exercise-name">Tricep Dip (using bed/chair)</div><div class="exercise-desc">Hands on the edge behind you, lower until elbows are at 90 degrees. One piece of furniture is all you need.</div></div>
+          <div class="exercise-sets">10 reps</div>
+        </li>
+      </ul>
+    </div>
+
+    <h2>MAKING IT ACTUALLY HAPPEN</h2>
+
+    <p>The routine itself is easy. The hard part is the moment between deciding to do it and actually starting. Here's what actually works for people on the road.</p>
+
+    <p><strong>Do it before you sit down.</strong> The moment you sit on that hotel bed after a show, it's over. Your body sends a signal that rest has begun and overriding it requires more willpower than most people have at midnight. If you're going to do it, do it before you sit. Change clothes in the lobby bathroom if you have to. Get in the room and start moving before your brain catches up.</p>
+
+    <p><strong>Use a timer, not a rep counter.</strong> On days when you're too tired to think, just set a twenty-minute timer and move through the exercises however you can. Half reps, slow reps, modified reps — it doesn't matter. Moving for twenty minutes always beats doing nothing perfectly.</p>
+
+    <p><strong>Don't try to be consistent every day.</strong> Consistency on tour means something different than it does at home. Three times a week is a win. Twice a week is still a win. Once a week is better than zero. Give yourself a target that's actually achievable in your schedule and feel good about hitting it instead of guilty about missing a perfect streak.</p>
+
+    <p><strong>Tell someone on your crew.</strong> Accountability works even informally. If one other person on your team knows you're trying to do this, you'll do it more. That's just how humans work.</p>
+
+    <h2>THE DAYS WHEN YOU TRULY CANNOT</h2>
+
+    <p>There will be days — and on a long tour, stretches of days — when twenty minutes of a workout is genuinely not possible. Not "I don't feel like it" impossible. Actually impossible. Back-to-back shows, overnight drives, sick days, days where something goes wrong and your entire energy reserve goes to fixing it.</p>
+
+    <p>On those days, do one thing. Just one. Ten squats in the bathroom before your shower. A one-minute plank while the coffee brews. A single set of push-ups. Not because it makes a physical difference. But because maintaining the identity of someone who moves their body — even imperfectly, even minimally — is easier than rebuilding the habit from zero after three weeks of nothing.</p>
+
+    <p>The goal isn't to be fit while touring. The goal is to feel human. Twenty minutes, three times a week, in whatever hotel room you wake up in — that's enough to make a real difference across a long tour.</p>
+
+    <div class="article-footer-note">
+      Screenshot the workout block above and save it to your camera roll. That way you have it even without wifi. No excuses — you said so yourself.
+    </div>
+  </div>
+
+  <div class="article-actions">
+    <div class="article-tags">
+      <span class="tag">Fitness</span><span class="tag">Workout</span><span class="tag">Hotel Room</span><span class="tag">Bodyweight</span><span class="tag">Touring Life</span>
+    </div>
+    <div class="share-buttons">
+      <span class="share-label">Share</span>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=The+20-Minute+Hotel+Room+Workout&url=https://ontourlife.com/hotel-room-workout" target="_blank">Twitter</a>
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://ontourlife.com/hotel-room-workout" target="_blank">Facebook</a>
+      <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Link',2000)">Copy Link</button>
+    </div>
+  </div>
+</div>
+
+<div class="more-articles">
+  <div class="more-title">More from On Tour Life</div>
+  <div class="more-grid">
+    <a href="the-3am-loneliness.html" class="more-card">
+      <div class="more-card-cat">Mental Health</div>
+      <div class="more-card-title">THE 3AM LONELINESS: WHY THE ROAD HITS DIFFERENT AFTER THE SHOW</div>
+      <div class="more-card-desc">The crowd goes home. The crew breaks down the stage. And the silence hits like a wall.</div>
+    </a>
+    <a href="surviving-the-catering-table.html" class="more-card">
+      <div class="more-card-cat">Nutrition</div>
+      <div class="more-card-title">SURVIVING THE CATERING TABLE</div>
+      <div class="more-card-desc">How to actually fuel yourself when catering is your only kitchen option.</div>
+    </a>
+    <a href="making-friends-on-tour.html" class="more-card">
+      <div class="more-card-cat">Connection</div>
+      <div class="more-card-title">HOW TO ACTUALLY MAKE FRIENDS ON TOUR</div>
+      <div class="more-card-desc">The bus is full and somehow you've never felt more alone. Here's how to navigate it.</div>
+    </a>
+  </div>
+</div>
+
+<div class="newsletter-bar">
+  <div><div class="newsletter-bar-title">STAY IN THE LOOP</div><div class="newsletter-bar-sub">One email a week. Real stories, practical advice, zero fluff.</div></div>
+  <div class="newsletter-bar-form">
+    <a href="index.html#newsletter" class="newsletter-bar-btn" style="text-decoration:none;">Get the Newsletter →</a>
+  </div>
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <span class="footer-copy">© 2026 On Tour Life. Built for the road, by the road.</span>
+  <a href="index.html" class="footer-back">← All Articles</a>
+</footer>
+<script>
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const progress = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    document.getElementById('progressBar').style.width = progress + '%';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sleep Protocols for Touring — On Tour Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root { --black: #0a0a0a; --off-black: #111111; --dark: #1a1a1a; --border: #2a2a2a; --amber: #e8a020; --white: #f0ede8; --muted: #888880; --muted-light: #aaa9a3; --accent: #e06060; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.6; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-cta { background: var(--amber); color: var(--black) !important; padding: 8px 18px; font-weight: 500 !important; }
+  .reading-progress { position: fixed; top: 64px; left: 0; height: 2px; background: var(--accent); z-index: 99; width: 0%; transition: width 0.1s linear; }
+  .article-hero { padding-top: 64px; background: var(--off-black); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(201,64,64,0.06) 0%, transparent 60%); pointer-events: none; }
+  .article-hero-inner { max-width: 860px; margin: 0 auto; padding: 80px 40px 60px; position: relative; z-index: 1; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 36px; transition: color 0.2s; }
+  .back-link:hover { color: var(--amber); }
+  .back-link::before { content: '←'; font-size: 14px; }
+  .article-category { display: inline-block; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 12px; margin-bottom: 24px; background: rgba(201,64,64,0.15); color: var(--accent); border: 1px solid rgba(201,64,64,0.25); font-weight: 500; }
+  .article-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 76px); line-height: 0.95; letter-spacing: 1px; color: var(--white); margin-bottom: 28px; }
+  .article-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--muted-light); line-height: 1.5; margin-bottom: 36px; max-width: 640px; }
+  .article-meta { display: flex; align-items: center; gap: 20px; padding-top: 28px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .meta-author { display: flex; align-items: center; gap: 10px; }
+  .meta-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--amber); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--black); flex-shrink: 0; }
+  .meta-author-name { font-size: 14px; color: var(--white); font-weight: 400; }
+  .meta-author-role { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .meta-dot { color: var(--border); font-size: 18px; }
+  .meta-info { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+  .meta-info span { color: var(--accent); }
+  .article-body { max-width: 860px; margin: 0 auto; padding: 72px 40px 100px; }
+  .article-content p { font-size: 18px; line-height: 1.85; color: #ccc9c2; margin-bottom: 28px; font-weight: 300; }
+  .article-content p:first-child { font-size: 21px; color: var(--white); line-height: 1.75; }
+  .article-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1.5px; color: var(--white); margin: 60px 0 24px; padding-top: 60px; border-top: 1px solid var(--border); }
+  .article-content hr { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+  .article-content strong { color: var(--accent); font-weight: 500; }
+  .pull-quote { border-left: 3px solid var(--accent); padding: 8px 0 8px 32px; margin: 48px 0; }
+  .pull-quote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px !important; line-height: 1.5 !important; color: var(--white) !important; margin: 0 !important; }
+  .article-footer-note { margin-top: 64px; padding: 28px 32px; background: var(--dark); border: 1px solid var(--border); border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.7; color: var(--muted-light); }
+  .article-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); gap: 24px; flex-wrap: wrap; }
+  .article-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+  .tag:hover { border-color: var(--amber); color: var(--amber); }
+  .share-buttons { display: flex; gap: 10px; align-items: center; }
+  .share-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+  .share-btn { border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; background: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
+  .share-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .more-articles { background: var(--off-black); padding: 80px; border-top: 1px solid var(--border); }
+  .more-title { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 16px; }
+  .more-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .more-card { background: var(--dark); padding: 32px; text-decoration: none; color: inherit; display: block; transition: background 0.2s; border-bottom: 2px solid transparent; }
+  .more-card:hover { background: #202020; border-bottom-color: var(--amber); }
+  .more-card-cat { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; font-weight: 500; }
+  .more-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
+  .more-card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .newsletter-bar { background: var(--amber); padding: 48px 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .newsletter-bar-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; color: var(--black); margin-bottom: 6px; }
+  .newsletter-bar-sub { font-size: 14px; color: rgba(0,0,0,0.6); }
+  .newsletter-bar-btn { background: var(--black); border: none; color: var(--amber); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-block; }
+  footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 40px 80px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .footer-logo span { color: var(--white); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-back { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-back:hover { color: var(--amber); }
+  @media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } .article-hero-inner, .article-body { padding: 60px 24px 48px; } .article-content p { font-size: 16px; } .more-articles { padding: 48px 24px; } .more-grid { grid-template-columns: 1fr; } .newsletter-bar { flex-direction: column; padding: 40px 24px; } footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; } .article-actions { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+<div class="reading-progress" id="progressBar"></div>
+<nav>
+  <a class="nav-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <ul class="nav-links">
+    <li><a href="index.html#topics">Topics</a></li>
+    <li><a href="index.html#featured">Articles</a></li>
+    <li><a href="index.html#newsletter">Newsletter</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Join the Crew</a></li>
+  </ul>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="index.html" class="back-link">Back to all articles</a>
+    <span class="article-category">Fitness</span>
+    <h1 class="article-title">SLEEP PROTOCOLS FOR TOURING: THE SCIENCE OF CRASHING ANYWHERE</h1>
+    <p class="article-subtitle">Bus bunks, airport terminals, hotel rooms at noon — a practical guide to getting real rest on the road, whatever the conditions.</p>
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar">OTL</div>
+        <div><div class="meta-author-name">On Tour Life Team</div><div class="meta-author-role">Health & Recovery</div></div>
+      </div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info">April 14, 2026</div>
+      <span class="meta-dot">·</span>
+      <div class="meta-info"><span>7 min read</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="article-content">
+    <p>Sleep is the one thing every touring professional agrees they need more of and almost nobody actually gets. Not because the desire isn't there — you can be so exhausted at the end of a show day that you're falling asleep standing up. But because the conditions of touring make real, restorative sleep surprisingly hard to come by even when you finally get horizontal.</p>
+
+    <p>The problem isn't just the obvious stuff — late nights, early calls, time zone changes. It's that touring systematically disrupts every environmental cue your brain uses to decide when it's safe to sleep deeply. Different rooms every night. Variable noise levels. Irregular schedules. Light at all the wrong times. Your nervous system, which evolved to sleep when things are consistent and safe, is constantly being told that nothing is consistent and nothing is entirely safe.</p>
+
+    <p>Understanding that is the starting point. Because once you know why touring wrecks sleep, the fixes become a lot more obvious.</p>
+
+    <hr>
+
+    <h2>WHY TOURING BREAKS YOUR SLEEP SPECIFICALLY</h2>
+
+    <p>Your body runs on a circadian rhythm — an internal clock that regulates sleep, energy, appetite, and mood across roughly 24-hour cycles. That clock is set and maintained by three main inputs: light, temperature, and routine. Touring dismantles all three simultaneously.</p>
+
+    <p>Light is the biggest one. Your brain uses light — specifically morning light — to anchor your internal clock to the time of day. When you're sleeping in blackout hotel rooms at noon, arriving in cities at 2AM, and spending your active hours in windowless venues, your brain's light input becomes completely scrambled. The result is that your internal clock drifts, and you end up fighting to fall asleep at times when your body thinks it should be awake, and fighting to stay awake at times when it thinks you should be sleeping.</p>
+
+    <p>Adrenaline is the second factor. A live show floods your system with cortisol and adrenaline — chemicals designed to keep you sharp and responsive. They're enormously useful at 9PM during a show. They're a disaster at 1AM when you're trying to wind down. Most touring people are attempting to fall asleep while their nervous system is still running at show-mode levels, which is like trying to park a car while it's still in fifth gear.</p>
+
+    <div class="pull-quote">
+      <p>"Most touring people try to fall asleep while their nervous system is still running at show-mode levels."</p>
+    </div>
+
+    <h2>THE ENVIRONMENT: MAKING ANY ROOM SLEEPABLE</h2>
+
+    <p>You can't control what room you're in. You can control what that room feels like. A few consistent additions to your routine make an enormous difference.</p>
+
+    <p><strong>Total darkness.</strong> Hotel blackout curtains are inconsistent at best — there's almost always a gap letting in light from outside or the hallway. A sleep mask is the most reliable fix and takes up essentially no space in your bag. If you're not using one already, this single change will improve your sleep quality noticeably within a week.</p>
+
+    <p><strong>Consistent sound.</strong> The problem with trying to sleep in unfamiliar environments isn't usually that they're too noisy — it's that the noise is unpredictable. A steady, consistent background sound (a white noise app, a fan, rain sounds) masks the unpredictable spikes and gives your nervous system something consistent to rest against. Brown noise or pink noise tends to work better than pure white noise for most people.</p>
+
+    <p><strong>Temperature.</strong> Your body drops its core temperature slightly to initiate deep sleep. Rooms that are too warm actively prevent this. If you have control over the thermostat, cooler is almost always better for sleep — around 65-68°F (18-20°C) is the research-backed sweet spot. If you don't have control, a thin blanket you travel with can help regulate more consistently than whatever the hotel provides.</p>
+
+    <p><strong>Your own pillow or pillowcase.</strong> This sounds small but the research on it is real — familiar smells and textures genuinely help your brain classify an environment as safe. A pillowcase from home costs nothing to pack and consistently improves sleep quality in unfamiliar rooms.</p>
+
+    <h2>THE WIND-DOWN: BRIDGING THE GAP FROM SHOW TO SLEEP</h2>
+
+    <p>The gap between load-out and sleep is the hardest part of touring sleep, and almost nobody manages it well. You come off a show wired, sometimes hungry, often still in the social buzz of the crew, and you're expected to transition to deep sleep within an hour or two. Without any kind of intentional wind-down, that transition is brutal.</p>
+
+    <p><strong>Give yourself at least 45 minutes.</strong> Not because you need to do anything specific in those 45 minutes, but because your nervous system needs time to register that the high-alert phase is over. Rushing from load-out to pillow consistently produces poor sleep even when you're exhausted.</p>
+
+    <p><strong>Avoid screens for the last 30 minutes.</strong> The blue light from phones genuinely suppresses melatonin production — not dramatically, but enough to delay sleep onset by 20-30 minutes on average. On a night when you only have five hours anyway, losing another half hour to phone scrolling is significant. A book, a podcast, or just lying in the dark works better than any amount of late-night Instagram.</p>
+
+    <p><strong>Eat something small if you're hungry, but not a full meal.</strong> Digesting a large meal raises your core body temperature and keeps your system active when it should be winding down. A small snack — especially one with some carbohydrates — actually helps sleep by supporting serotonin production. The catering situation makes this harder to manage, but it's worth being intentional about.</p>
+
+    <h2>BUS SLEEP: THE UNIQUE CHALLENGE</h2>
+
+    <p>Bunk sleep on a tour bus is its own category. The motion, the sound of the engine, the proximity to other people, the regulated temperature — some people adapt to it quickly and sleep better on the bus than anywhere else. Others never quite crack it.</p>
+
+    <p>The people who sleep well on buses tend to have a few things in common. They commit to the bunk fully — blackout curtain drawn, earbuds in, phone away — rather than treating it as a halfway zone. They accept the motion rather than fighting it, which takes a few nights but does happen. And they maintain the same pre-sleep routine on the bus that they use in hotels, which signals to their nervous system that the circumstances don't change the intent.</p>
+
+    <p>If bus sleep is genuinely not working for you after a few weeks, that's worth taking seriously rather than pushing through. Chronic poor sleep compounds fast and affects every other aspect of how you function on tour.</p>
+
+    <div class="article-footer-note">
+      Even implementing one or two of these consistently makes a real difference across a long tour. Start with the sleep mask and the wind-down window. Everything else builds from there.
+    </div>
+  </div>
+
+  <div class="article-actions">
+    <div class="article-tags">
+      <span class="tag">Sleep</span><span class="tag">Recovery</span><span class="tag">Fitness</span><span class="tag">Touring Life</span><span class="tag">Health</span>
+    </div>
+    <div class="share-buttons">
+      <span class="share-label">Share</span>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=Sleep+Protocols+for+Touring&url=https://ontourlife.com/sleep-protocols" target="_blank">Twitter</a>
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://ontourlife.com/sleep-protocols" target="_blank">Facebook</a>
+      <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Link',2000)">Copy Link</button>
+    </div>
+  </div>
+</div>
+
+<div class="more-articles">
+  <div class="more-title">More from On Tour Life</div>
+  <div class="more-grid">
+    <a href="hotel-room-workout.html" class="more-card">
+      <div class="more-card-cat">Fitness</div>
+      <div class="more-card-title">THE 20-MINUTE HOTEL ROOM WORKOUT</div>
+      <div class="more-card-desc">No gym, no excuses. A complete bodyweight routine for touring life.</div>
+    </a>
+    <a href="hydration-on-tour.html" class="more-card">
+      <div class="more-card-cat">Nutrition</div>
+      <div class="more-card-title">HYDRATION ON TOUR: THE ONE HABIT THAT CHANGES EVERYTHING</div>
+      <div class="more-card-desc">Most touring pros are chronically dehydrated. Easy fixes that actually work.</div>
+    </a>
+    <a href="the-3am-loneliness.html" class="more-card">
+      <div class="more-card-cat">Mental Health</div>
+      <div class="more-card-title">THE 3AM LONELINESS</div>
+      <div class="more-card-desc">Why the road hits different after the show — and what to do about it.</div>
+    </a>
+  </div>
+</div>
+
+<div class="newsletter-bar">
+  <div><div class="newsletter-bar-title">STAY IN THE LOOP</div><div class="newsletter-bar-sub">One email a week. Real stories, practical advice, zero fluff.</div></div>
+  <a href="index.html#newsletter" class="newsletter-bar-btn" style="text-decoration:none;">Get the Newsletter →</a>
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <span class="footer-copy">© 2026 On Tour Life. Built for the road, by the road.</span>
+  <a href="index.html" class="footer-back">← All Articles</a>
+</footer>
+<script>
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    document.getElementById('progressBar').style.width = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
+  });
+</script>
+</body>
+</html>

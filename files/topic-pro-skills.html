@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRO SKILLS — On Tour Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root { --black: #0a0a0a; --off-black: #111111; --dark: #1a1a1a; --border: #2a2a2a; --amber: #e8a020; --white: #f0ede8; --muted: #888880; --muted-light: #aaa9a3; --accent: #70cc70; --accent-bg: rgba(80,160,80,0.12); --accent-border: rgba(80,160,80,0.25); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.6; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-cta { background: var(--amber); color: var(--black) !important; padding: 8px 18px; font-weight: 500 !important; }
+  .topic-hero { padding-top: 64px; background: var(--off-black); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .topic-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(80,160,80,0.1) 0%, transparent 60%); pointer-events: none; }
+  .topic-hero::after { content: '🎙️'; position: absolute; right: 80px; top: 50%; transform: translateY(-50%); font-size: 180px; opacity: 0.06; pointer-events: none; }
+  .topic-hero-inner { max-width: 1100px; margin: 0 auto; padding: 80px 40px 60px; position: relative; z-index: 1; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 32px; transition: color 0.2s; }
+  .back-link:hover { color: var(--amber); }
+  .back-link::before { content: '←'; font-size: 14px; }
+  .topic-tag { display: inline-block; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 14px; margin-bottom: 20px; background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-border); font-weight: 500; }
+  .topic-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 8vw, 110px); line-height: 0.9; letter-spacing: 2px; color: var(--white); margin-bottom: 20px; }
+  .topic-desc { font-size: 18px; line-height: 1.7; color: var(--muted-light); max-width: 600px; margin-bottom: 36px; font-weight: 300; }
+  .topic-count { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .topic-count span { color: var(--accent); font-weight: 500; }
+  .articles-section { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+  .section-label { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 16px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 80px; }
+  .article-card { background: var(--dark); padding: 36px; text-decoration: none; color: inherit; display: block; position: relative; overflow: hidden; transition: background 0.2s; border-bottom: 2px solid transparent; }
+  .article-card:hover { background: #202020; border-bottom-color: var(--accent); }
+  .card-num { position: absolute; top: 24px; right: 24px; font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: rgba(255,255,255,0.04); line-height: 1; }
+  .card-cat { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; font-weight: 500; }
+  .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.5px; line-height: 1.1; color: var(--white); margin-bottom: 12px; }
+  .card-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+  .card-meta { display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .card-read { color: var(--accent); }
+  .card-dot { color: var(--border); }
+  .article-card.large { grid-column: span 2; padding: 48px; }
+  .article-card.large .card-title { font-size: 38px; margin-bottom: 16px; }
+  .article-card.large .card-desc { font-size: 16px; max-width: 500px; }
+  .newsletter-bar { background: var(--accent); padding: 48px 80px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .newsletter-bar-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; color: var(--black); margin-bottom: 6px; }
+  .newsletter-bar-sub { font-size: 14px; color: rgba(0,0,0,0.6); }
+  .newsletter-bar-btn { background: var(--black); border: none; color: var(--accent); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-block; }
+  .other-topics { background: var(--off-black); padding: 80px; border-top: 1px solid var(--border); }
+  .other-topics-title { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 16px; }
+  .other-topics-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .topics-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; }
+  .topic-pill { background: var(--dark); padding: 28px 24px; text-decoration: none; color: inherit; display: block; text-align: center; transition: background 0.2s, transform 0.2s; border-top: 2px solid var(--border); }
+  .topic-pill:hover { transform: translateY(-3px); background: #202020; }
+  .topic-pill-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+  .topic-pill-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1.5px; color: var(--white); }
+  footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 40px 80px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 3px; color: var(--amber); text-decoration: none; }
+  .footer-logo span { color: var(--white); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-back { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-back:hover { color: var(--amber); }
+  @media (max-width: 900px) { nav { padding: 0 20px; } .nav-links { display: none; } .topic-hero-inner, .articles-section { padding: 60px 24px 40px; } .articles-grid { grid-template-columns: 1fr; } .article-card.large { grid-column: span 1; } .topics-row { grid-template-columns: repeat(3, 1fr); } .newsletter-bar { flex-direction: column; padding: 40px 24px; } .other-topics { padding: 48px 24px; } footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; } }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <ul class="nav-links">
+    <li><a href="index.html#topics">Topics</a></li>
+    <li><a href="index.html#featured">Articles</a></li>
+    <li><a href="index.html#newsletter">Newsletter</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#newsletter" class="nav-cta">Join the Crew</a></li>
+  </ul>
+</nav>
+
+<div class="topic-hero">
+  <div class="topic-hero-inner">
+    <a href="index.html" class="back-link">All Topics</a>
+    <span class="topic-tag">Topic</span>
+    <h1 class="topic-title">PRO SKILLS</h1>
+    <p class="topic-desc">The professional skills that separate people who keep getting called back from the ones who don't. Communication, conflict, reputation, and the unspoken rules of the industry.</p>
+    <div class="topic-count"><span>3</span> Articles</div>
+  </div>
+</div>
+
+<div class="articles-section">
+  <div class="section-label">All Pro Skills Articles</div>
+  <div class="articles-grid">
+    <a href="communication-on-tour.html" class="article-card large">
+      <div class="card-num">01</div>
+      <div class="card-cat">Pro Skills</div>
+      <div class="card-title">COMMUNICATION THAT DOESN'T GET YOU FIRED: WORKING WITH ARTISTS, MANAGEMENT, AND PROMOTERS</div>
+      <div class="card-desc">The unspoken rules of professional communication in live events.</div>
+      <div class="card-meta"><span>On Tour Life Team</span><span class="card-dot">·</span><span class="card-read">6 min read</span></div>
+    </a>
+    <a href="how-to-get-hired-again.html" class="article-card">
+      <div class="card-num">02</div>
+      <div class="card-cat">Pro Skills</div>
+      <div class="card-title">HOW TO GET HIRED AGAIN: WHAT TOUR MANAGERS ACTUALLY LOOK FOR</div>
+      <div class="card-desc">The real reasons people get called back — and the ones they don't. Straight talk from the people making the decisions.</div>
+      <div class="card-meta"><span>On Tour Life Team</span><span class="card-dot">·</span><span class="card-read">7 min read</span></div>
+    </a>
+    <a href="handling-conflict-on-tour.html" class="article-card">
+      <div class="card-num">03</div>
+      <div class="card-cat">Pro Skills</div>
+      <div class="card-title">HANDLING CONFLICT ON TOUR WITHOUT BURNING BRIDGES</div>
+      <div class="card-desc">Tight quarters, high pressure, exhausted people. How to navigate conflict on the road and come out intact.</div>
+      <div class="card-meta"><span>On Tour Life Team</span><span class="card-dot">·</span><span class="card-read">6 min read</span></div>
+    </a>
+
+  </div>
+</div>
+
+<div class="newsletter-bar">
+  <div><div class="newsletter-bar-title">STAY IN THE LOOP</div><div class="newsletter-bar-sub">One email a week. Real stories, practical advice, zero fluff.</div></div>
+  <a href="index.html#newsletter" class="newsletter-bar-btn" style="text-decoration:none;">Get the Newsletter →</a>
+</div>
+
+<div class="other-topics">
+  <div class="other-topics-title">Explore Other Topics</div>
+  <div class="topics-row">
+    <a href="topic-mental-health.html" class="topic-pill" style="border-top-color:#4ec4b0;">
+      <span class="topic-pill-icon">🧠</span>
+      <div class="topic-pill-name">MENTAL HEALTH</div>
+    </a>
+    <a href="topic-nutrition.html" class="topic-pill" style="border-top-color:#e8a020;">
+      <span class="topic-pill-icon">🥗</span>
+      <div class="topic-pill-name">NUTRITION</div>
+    </a>
+    <a href="topic-fitness.html" class="topic-pill" style="border-top-color:#e06060;">
+      <span class="topic-pill-icon">💪</span>
+      <div class="topic-pill-name">FITNESS</div>
+    </a>
+    <a href="topic-connection.html" class="topic-pill" style="border-top-color:#9090e0;">
+      <span class="topic-pill-icon">🤝</span>
+      <div class="topic-pill-name">CONNECTION</div>
+    </a>
+    <a href="topic-purpose.html" class="topic-pill" style="border-top-color:#e09040;">
+      <span class="topic-pill-icon">🎯</span>
+      <div class="topic-pill-name">PURPOSE</div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html"><span>ON TOUR</span> LIFE</a>
+  <span class="footer-copy">© 2026 On Tour Life. Built for the road, by the road.</span>
+  <a href="index.html" class="footer-back">← Home</a>
+</footer>
+</body>
+</html>
